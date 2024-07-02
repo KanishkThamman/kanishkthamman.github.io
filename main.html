@@ -129,7 +129,7 @@
         .item-details {
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
             position: absolute;
             top: 0;
             left: 0;
@@ -174,6 +174,10 @@
             font-size: 14px;
             transition: all 0.3s ease;
             border: 2px solid var(--primary-color);
+        }
+        .item-details.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
         .item-link:hover {
@@ -443,104 +447,106 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-        // Three.js background animation
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        // Create a group to hold all 3D objects
-        const group = new THREE.Group();
-        scene.add(group);
-
-        // Add more complex 3D shapes
-        const torusGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-        const torusMaterial = new THREE.MeshPhongMaterial({ color: 0xb19cd9 });
-        const torusKnot = new THREE.Mesh(torusGeometry, torusMaterial);
-        group.add(torusKnot);
-
-        const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5);
-        const icosahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xbae1ff });
-        const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
-        icosahedron.position.set(-2, 1, -1);
-        group.add(icosahedron);
-
-        const octahedronGeometry = new THREE.OctahedronGeometry(0.7);
-        const octahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xffb3ba });
-        const octahedron = new THREE.Mesh(octahedronGeometry, octahedronMaterial);
-        octahedron.position.set(2, -1, -2);
-        group.add(octahedron);
-
-        // Add lights
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
-
-        const pointLight = new THREE.PointLight(0xffffff, 1);
-        pointLight.position.set(5, 5, 5);
-        scene.add(pointLight);
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate the entire group
-            group.rotation.x += 0.001;
-            group.rotation.y += 0.002;
-
-            // Rotate individual objects
-            torusKnot.rotation.x += 0.01;
-            icosahedron.rotation.y += 0.02;
-            octahedron.rotation.z += 0.015;
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+            // Three.js background animation
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // Hover functionality
-        const items = document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item');
-
-        items.forEach(item => {
-            const details = item.querySelector('.item-details');
-            let timeout;
-
-            item.addEventListener('mouseenter', () => {
-                clearTimeout(timeout);
-                item.style.transition = 'all 0.3s ease';
-                item.style.height = `${item.scrollHeight}px`;
-                item.style.zIndex = '10';
-                item.style.boxShadow = '0 10px 20px rgba(177, 156, 217, 0.2)';
-                
-                // Show details after a short delay
-                setTimeout(() => {
-                    details.style.opacity = '1';
-                    details.style.visibility = 'visible';
-                }, 150);
+    
+            // Create a group to hold all 3D objects
+            const group = new THREE.Group();
+            scene.add(group);
+    
+            // Add more complex 3D shapes
+            const torusGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+            const torusMaterial = new THREE.MeshPhongMaterial({ color: 0xb19cd9 });
+            const torusKnot = new THREE.Mesh(torusGeometry, torusMaterial);
+            group.add(torusKnot);
+    
+            const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5);
+            const icosahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xbae1ff });
+            const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
+            icosahedron.position.set(-2, 1, -1);
+            group.add(icosahedron);
+    
+            const octahedronGeometry = new THREE.OctahedronGeometry(0.7);
+            const octahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xffb3ba });
+            const octahedron = new THREE.Mesh(octahedronGeometry, octahedronMaterial);
+            octahedron.position.set(2, -1, -2);
+            group.add(octahedron);
+    
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+    
+            const pointLight = new THREE.PointLight(0xffffff, 1);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+    
+            camera.position.z = 5;
+    
+            function animate() {
+                requestAnimationFrame(animate);
+    
+                // Rotate the entire group
+                group.rotation.x += 0.001;
+                group.rotation.y += 0.002;
+    
+                // Rotate individual objects
+                torusKnot.rotation.x += 0.01;
+                icosahedron.rotation.y += 0.02;
+                octahedron.rotation.z += 0.015;
+    
+                renderer.render(scene, camera);
+            }
+            animate();
+    
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
             });
-
-            item.addEventListener('mouseleave', () => {
-                // Hide details immediately
-                details.style.opacity = '0';
-                details.style.visibility = 'hidden';
-
-                // Start closing animation after a short delay
-                timeout = setTimeout(() => {
-                    item.style.transition = 'all 0.3s ease';
-                    item.style.height = '200px';
-                    item.style.zIndex = '';
-                    item.style.boxShadow = '';
-                }, 150);
+    
+            // Hover functionality
+            const items = document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item');
+    
+            items.forEach(item => {
+                const details = item.querySelector('.item-details');
+                let timeout;
+    
+                item.addEventListener('mouseenter', () => {
+                    clearTimeout(timeout);
+                    items.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            resetItem(otherItem);
+                        }
+                    });
+                    item.style.transition = 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                    item.style.height = `${item.scrollHeight}px`;
+                    item.style.zIndex = '10';
+                    item.style.boxShadow = '0 10px 20px rgba(177, 156, 217, 0.2)';
+                    setTimeout(() => {
+                        details.classList.add('visible');
+                    }, 150);
+                });
+    
+                item.addEventListener('mouseleave', () => {
+                    details.classList.remove('visible');
+                    timeout = setTimeout(() => {
+                        resetItem(item);
+                    }, 200);
+                });
             });
+    
+            function resetItem(item) {
+                item.style.transition = 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                item.style.height = '200px';
+                item.style.zIndex = '';
+                item.style.boxShadow = '';
+                item.querySelector('.item-details').classList.remove('visible');
+            }
         });
-    });
-
-
     </script>
+    
 </body>
 </html>
