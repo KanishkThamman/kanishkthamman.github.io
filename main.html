@@ -276,12 +276,35 @@
                 font-size: 36px;
             }
         }
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
+        .section {
+            transform: perspective(1000px) rotateX(5deg);
+            transition: transform 0.3s ease;
+        }
 
+        .section:hover {
+            transform: perspective(1000px) rotateX(0deg) translateZ(20px);
+        }
 
+        .certification-item, .project-item {
+            transition: transform 0.3s ease;
+        }
+
+        .certification-item:hover, .project-item:hover {
+            transform: scale(1.05) rotateY(5deg);
+        }
     </style>
 </head>
 <body>
+    <canvas id="background-canvas"></canvas>
     <div class="content">
         <div class="hero">
             <canvas id="background-canvas"></canvas>
@@ -314,7 +337,7 @@
         </div>
 
         <!-- Certificates Section -->
-        <section id="certificates" class="section">
+        <section id="certificates" class="section parallax" data-speed="0.2">
             <div class="section-content">
                 <h2>Certificates</h2>
                 <div class="grid-container">
@@ -439,7 +462,7 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section">
+        <section id="projects" class="section parallax" data-speed="0.1">
             <div class="section-content">
                 <h2>Projects</h2>
                 <div class="grid-container">
@@ -721,6 +744,83 @@
             });
         });
     </script>
+
+    <!-- Effects And 3d Stuff-->
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Three.js background animation
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Create a group to hold all 3D objects
+            const group = new THREE.Group();
+            scene.add(group);
+
+            // Add 3D shapes
+            const torusGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+            const torusMaterial = new THREE.MeshPhongMaterial({ color: 0xb19cd9 });
+            const torusKnot = new THREE.Mesh(torusGeometry, torusMaterial);
+            group.add(torusKnot);
+
+            const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5);
+            const icosahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xbae1ff });
+            const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
+            icosahedron.position.set(-2, 1, -1);
+            group.add(icosahedron);
+
+            const octahedronGeometry = new THREE.OctahedronGeometry(0.7);
+            const octahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xffb3ba });
+            const octahedron = new THREE.Mesh(octahedronGeometry, octahedronMaterial);
+            octahedron.position.set(2, -1, -2);
+            group.add(octahedron);
+
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const pointLight = new THREE.PointLight(0xffffff, 1);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Rotate the entire group
+                group.rotation.x += 0.001;
+                group.rotation.y += 0.002;
+
+                // Rotate individual objects
+                torusKnot.rotation.x += 0.01;
+                icosahedron.rotation.y += 0.02;
+                octahedron.rotation.z += 0.015;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Resize handler
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Parallax effect
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                document.querySelectorAll('.parallax').forEach(element => {
+                    const speed = element.dataset.speed || 0.5;
+                    element.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            });
+
+            // Keep your existing popup functionality and other JavaScript here
+        });
+     </script>
     
 </body>
 </html>
