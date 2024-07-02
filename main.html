@@ -508,8 +508,8 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
     
-            // Hover functionality
-            const items = document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item');
+                // Hover functionality
+                const items = document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item');
 
             items.forEach(item => {
                 const details = item.querySelector('.item-details');
@@ -523,16 +523,19 @@
                         }
                     });
                     item.style.transition = 'height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s ease';
-                    item.style.height = `${item.scrollHeight}px`;
+                    
+                    // Show the details to calculate the full height
+                    details.style.display = 'block';
+                    details.style.opacity = '1';
+                    details.style.visibility = 'visible';
+                    
+                    // Calculate the full height including the button
+                    const fullHeight = item.scrollHeight;
+                    
+                    // Set the height to accommodate all content
+                    item.style.height = `${fullHeight}px`;
                     item.style.zIndex = '10';
                     item.style.boxShadow = '0 10px 20px rgba(177, 156, 217, 0.2)';
-                    requestAnimationFrame(() => {
-                        details.style.display = 'block';
-                        requestAnimationFrame(() => {
-                            details.style.opacity = '1';
-                            details.style.visibility = 'visible';
-                        });
-                    });
                 });
 
                 item.addEventListener('mouseleave', () => {
