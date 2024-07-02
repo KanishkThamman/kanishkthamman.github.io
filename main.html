@@ -89,12 +89,25 @@
             margin-bottom: 50px;
             text-align: center;
             color: var(--primary-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
         }
 
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            transition: all 0.3s ease;
         }
 
         .experience-item, .education-item, .certification-item, .project-item {
@@ -104,23 +117,31 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+        }
+
+        .grid-container:hover .experience-item:not(:hover),
+        .grid-container:hover .education-item:not(:hover),
+        .grid-container:hover .certification-item:not(:hover),
+        .grid-container:hover .project-item:not(:hover) {
+            filter: blur(3px);
         }
 
         .experience-item:hover, .education-item:hover, .certification-item:hover, .project-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(177, 156, 217, 0.1);
+            transform: scale(1.05);
+            z-index: 1;
+            box-shadow: 0 10px 20px rgba(177, 156, 217, 0.2);
         }
 
         .item-details {
+            display: none;
+            padding: 20px;
+            background-color: rgba(10, 10, 10, 0.95);
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(10, 10, 10, 0.9);
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
             overflow-y: auto;
         }
 
@@ -128,7 +149,19 @@
         .education-item:hover .item-details, 
         .certification-item:hover .item-details, 
         .project-item:hover .item-details {
-            opacity: 1;
+            display: block;
+        }
+
+        .item-details ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .item-details li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .experience-item h3, .education-item h3, .certification-item h3, .project-item h3 {
@@ -148,6 +181,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
+            margin-top: 30px;
         }
 
         .skills-list li {
@@ -155,11 +189,33 @@
             padding: 10px 20px;
             border-radius: 20px;
             font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .skills-list li:hover {
+            background-color: rgba(177, 156, 217, 0.2);
+            transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
+            }
+
+            .name-overlay h1 {
+                font-size: 40px;
+            }
+
+            .name-overlay p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            h2 {
+                font-size: 36px;
             }
         }
     </style>
@@ -196,6 +252,7 @@
             </div>
         </div>
 
+        <!-- Certifications & Achievements Section -->
         <div class="section">
             <div class="section-content">
                 <h2>Certifications & Achievements</h2>
@@ -204,41 +261,68 @@
                         <h3>Cisco Certified Support Technician Cybersecurity</h3>
                         <p>Issued May 2024</p>
                         <div class="item-details">
-                            <p>Gained comprehensive knowledge of cybersecurity principles and practices. Learned to identify and mitigate various types of cyber threats. Developed technical support skills specific to cybersecurity.</p>
+                            <ul>
+                                <li>Gained comprehensive knowledge of cybersecurity principles and practices.</li>
+                                <li>Learned to identify and mitigate various types of cyber threats.</li>
+                                <li>Developed technical support skills specific to cybersecurity.</li>
+                                <li>Completed practical labs and simulations to apply cybersecurity concepts.</li>
+                                <li>Participated in online forums and study groups to enhance understanding.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="certification-item">
                         <h3>Dante Certification Level 1</h3>
                         <p>Issued May 2024 · Expires May 2027</p>
                         <div class="item-details">
-                            <p>Gained in-depth knowledge of Dante audio networking technology. Proficiency in using Dante Controller and configuring Dante devices. Understanding of network audio routing, clocking, and redundancy.</p>
+                            <ul>
+                                <li>Gained in-depth knowledge of Dante audio networking technology.</li>
+                                <li>Developed proficiency in using Dante Controller and configuring Dante devices.</li>
+                                <li>Learned about network audio routing, clocking, and redundancy.</li>
+                                <li>Practiced setting up and troubleshooting Dante networks.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="certification-item">
                         <h3>Information Technology Specialist in Cybersecurity</h3>
                         <p>Issued May 2024 · Expires May 2027</p>
                         <div class="item-details">
-                            <p>Acquired knowledge in key areas of cybersecurity including network security, cyber operations, and threat mitigation. Configured and managed security measures for IT systems and networks. Conducted security assessments and vulnerability testing.</p>
+                            <ul>
+                                <li>Acquired knowledge in key areas of cybersecurity including network security, cyber operations, and threat mitigation.</li>
+                                <li>Learned to configure and manage security measures for IT systems and networks.</li>
+                                <li>Conducted security assessments and vulnerability testing.</li>
+                                <li>Developed skills in incident response and forensics.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="certification-item">
                         <h3>Q-Sys Level One Certified</h3>
                         <p>Issued May 2024 · Expires May 2027</p>
                         <div class="item-details">
-                            <p>Completed rigorous training in building networked audio systems using the QSC ecosystem. Implemented optimized solutions to streamline audiovisual operations and enhance user experiences. Earned 4 units of AVIXA CTS Credits.</p>
+                            <ul>
+                                <li>Completed rigorous training in building networked audio systems using the QSC ecosystem.</li>
+                                <li>Implemented optimized solutions to streamline audiovisual operations and enhance user experiences.</li>
+                                <li>Earned 4 units of AVIXA CTS Credits.</li>
+                                <li>Developed skills in configuring, troubleshooting, and optimizing Q-Sys systems.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="certification-item">
                         <h3>PwC US - Cyber Security Consulting Job Simulation</h3>
                         <p>Issued Nov 2023</p>
                         <div class="item-details">
-                            <p>Participated in realistic scenarios and case studies relevant to cyber security consulting. Collaborated with team members to analyze security threats and propose effective solutions. Conducted research and gathered relevant information to support consulting recommendations.</p>
+                            <ul>
+                                <li>Participated in realistic scenarios and case studies relevant to cyber security consulting.</li>
+                                <li>Collaborated with team members to analyze security threats and propose effective solutions.</li>
+                                <li>Conducted research and gathered relevant information to support consulting recommendations.</li>
+                                <li>Developed skills in risk assessment and mitigation strategies.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Projects Section -->
         <div class="section">
             <div class="section-content">
                 <h2>Projects</h2>
@@ -247,21 +331,38 @@
                         <h3>Exploring the future implications and applications of Autonomous Cyber Defense</h3>
                         <p>Jun 2024</p>
                         <div class="item-details">
-                            <p>Made a presentation on the future implications of Autonomous cyber defense at Purdue University over the summer during the Cyber safe program. Presented it to my peers in the program and multiple members of faculty.</p>
+                            <ul>
+                                <li>Made a presentation on the future implications of Autonomous cyber defense at Purdue University.</li>
+                                <li>Conducted research on emerging trends in autonomous cybersecurity systems.</li>
+                                <li>Analyzed potential applications and challenges of autonomous cyber defense.</li>
+                                <li>Presented findings to peers and faculty members, fostering academic discussion.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="project-item">
                         <h3>An Air Quality Predictor Model based on a KNN classifier</h3>
                         <p>Apr 2022 - Jul 2022</p>
                         <div class="item-details">
-                            <p>Created a machine learning model that predicts the Air Quality Index (AQI) and other air quality values using KNN classifier. Completed this project as part of the Intel AI Readiness bootcamp and received dedicated mentorship from an industry expert.</p>
+                            <ul>
+                                <li>Created a machine learning model to predict Air Quality Index (AQI) using KNN classifier.</li>
+                                <li>Completed as part of the Intel AI Readiness bootcamp.</li>
+                                <li>Received dedicated mentorship from an industry expert.</li>
+                                <li>Conducted data analysis and preprocessing on air quality datasets.</li>
+                                <li>Implemented and fine-tuned the KNN algorithm for accurate predictions.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="project-item">
                         <h3>School Gym Audio System Project</h3>
                         <p>2023</p>
                         <div class="item-details">
-                            <p>Collaborated with a team to enhance the audio systems in the school gymnasium. Assisted in reworking the Q-Sys design, including the configuration of audio components, signal routing, and system integration. Optimized audio performance and streamlined operational workflows in the gymnasium environment.</p>
+                            <ul>
+                                <li>Collaborated with a team to enhance audio systems in the school gymnasium.</li>
+                                <li>Assisted in reworking the Q-Sys design for improved audio performance.</li>
+                                <li>Optimized audio performance and streamlined operational workflows.</li>
+                                <li>Participated in reorganizing server racks and improving cable management.</li>
+                                <li>Conducted testing and troubleshooting to resolve technical issues.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -293,6 +394,7 @@
         </div>
     </div>
 
+    
     <script>
         // Three.js background animation
         const scene = new THREE.Scene();
@@ -300,24 +402,50 @@
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        const geometry = new THREE.BufferGeometry();
-        const vertices = [];
-        for (let i = 0; i < 10000; i++) {
-            vertices.push(THREE.MathUtils.randFloatSpread(2000));
-            vertices.push(THREE.MathUtils.randFloatSpread(2000));
-            vertices.push(THREE.MathUtils.randFloatSpread(2000));
-        }
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        // Create a group to hold all 3D objects
+        const group = new THREE.Group();
+        scene.add(group);
 
-        const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 }));
-        scene.add(particles);
+        // Add more complex 3D shapes
+        const torusGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+        const torusMaterial = new THREE.MeshPhongMaterial({ color: 0xb19cd9 });
+        const torusKnot = new THREE.Mesh(torusGeometry, torusMaterial);
+        group.add(torusKnot);
 
-        camera.position.z = 1000;
+        const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5);
+        const icosahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xbae1ff });
+        const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
+        icosahedron.position.set(-2, 1, -1);
+        group.add(icosahedron);
+
+        const octahedronGeometry = new THREE.OctahedronGeometry(0.7);
+        const octahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xffb3ba });
+        const octahedron = new THREE.Mesh(octahedronGeometry, octahedronMaterial);
+        octahedron.position.set(2, -1, -2);
+        group.add(octahedron);
+
+        // Add lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        camera.position.z = 5;
 
         function animate() {
             requestAnimationFrame(animate);
-            particles.rotation.x += 0.0001;
-            particles.rotation.y += 0.0001;
+
+            // Rotate the entire group
+            group.rotation.x += 0.001;
+            group.rotation.y += 0.002;
+
+            // Rotate individual objects
+            torusKnot.rotation.x += 0.01;
+            icosahedron.rotation.y += 0.02;
+            octahedron.rotation.z += 0.015;
+
             renderer.render(scene, camera);
         }
         animate();
@@ -326,6 +454,20 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Pop-up functionality
+        document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const details = item.querySelector('.item-details');
+                details.classList.add('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('item-details')) {
+                e.target.classList.remove('active');
+            }
         });
     </script>
 </body>
