@@ -118,6 +118,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            height: 200px;
         }
 
         .grid-container:hover .experience-item:not(:hover),
@@ -129,12 +130,16 @@
 
         .experience-item:hover, .education-item:hover, .certification-item:hover, .project-item:hover {
             transform: scale(1.05);
-            z-index: 1;
+            z-index: 10;
+            height: auto;
+            max-height: 80vh;
+            overflow-y: auto;
             box-shadow: 0 10px 20px rgba(177, 156, 217, 0.2);
         }
 
         .item-details {
-            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
             padding: 20px;
             background-color: rgba(10, 10, 10, 0.95);
             position: absolute;
@@ -149,19 +154,7 @@
         .education-item:hover .item-details, 
         .certification-item:hover .item-details, 
         .project-item:hover .item-details {
-            display: block;
-        }
-
-        .item-details ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-
-        .item-details li {
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.4;
+            opacity: 1;
         }
 
         .experience-item h3, .education-item h3, .certification-item h3, .project-item h3 {
@@ -174,6 +167,18 @@
             font-size: 16px;
             color: var(--text-color);
             margin-bottom: 10px;
+        }
+
+        .item-details ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .item-details li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .skills-list {
@@ -218,6 +223,7 @@
                 font-size: 36px;
             }
         }
+
     </style>
 </head>
 <body>
