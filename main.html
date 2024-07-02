@@ -6,6 +6,7 @@
     <title>Kanishk Thamman - Cybersecurity & AI Specialist</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
+                
         :root {
             --bg-color: #0a0a0a;
             --text-color: #f0f0f0;
@@ -107,7 +108,6 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            transition: all 0.3s ease;
         }
 
         .experience-item, .education-item, .certification-item, .project-item {
@@ -121,60 +121,9 @@
             height: 200px;
         }
 
-        .experience-item::before, .education-item::before, .certification-item::before, .project-item::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            pointer-events: none;
-        }
-
-        .experience-item:hover::before, .education-item:hover::before, .certification-item:hover::before, .project-item:hover::before {
-            pointer-events: auto;
-        }
-
-        .grid-container:hover .experience-item:not(:hover),
-        .grid-container:hover .education-item:not(:hover),
-        .grid-container:hover .certification-item:not(:hover),
-        .grid-container:hover .project-item:not(:hover) {
-            filter: blur(3px);
-        }
-
-        .experience-item:hover, .education-item:hover, .certification-item:hover, .project-item:hover {
-            transform: scale(1.05);
-            z-index: 10;
-            height: auto;
-            min-height: 200px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 10px 20px rgba(177, 156, 217, 0.2);
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .experience-item, .education-item, .certification-item, .project-item {
-            background-color: rgba(177, 156, 217, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            height: 200px; /* Set a fixed initial height */
-        }
-
         .experience-item:hover, .education-item:hover, .certification-item:hover, .project-item:hover {
             height: auto;
             min-height: 200px;
-            z-index: 10;
-            box-shadow: 0 10px 20px rgba(177, 156, 217, 0.2);
         }
 
         .item-details {
@@ -187,7 +136,7 @@
             right: 0;
             bottom: 0;
             padding: 30px;
-            background-color: rgba(10, 10, 10, 0.95);
+            background-color: rgba(177, 156, 217, 0.05);
             overflow-y: auto;
         }
 
@@ -197,7 +146,21 @@
         .project-item:hover .item-details {
             opacity: 1;
             visibility: visible;
-            position: relative;
+            position: static;
+        }
+
+        .experience-item h3, .education-item h3, .certification-item h3, .project-item h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .item-details ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .item-details p {
+            margin-top: 0;
         }
 
         .item-link {
@@ -264,6 +227,7 @@
                 font-size: 36px;
             }
         }
+
 
 
     </style>
@@ -478,6 +442,7 @@
 
     
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
         // Three.js background animation
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -538,19 +503,44 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Pop-up functionality
-        document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const details = item.querySelector('.item-details');
-                details.classList.add('active');
+        // Hover functionality
+        const items = document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item');
+
+        items.forEach(item => {
+            const details = item.querySelector('.item-details');
+            let timeout;
+
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                item.style.transition = 'all 0.3s ease';
+                item.style.height = `${item.scrollHeight}px`;
+                item.style.zIndex = '10';
+                item.style.boxShadow = '0 10px 20px rgba(177, 156, 217, 0.2)';
+                
+                // Show details after a short delay
+                setTimeout(() => {
+                    details.style.opacity = '1';
+                    details.style.visibility = 'visible';
+                }, 150);
+            });
+
+            item.addEventListener('mouseleave', () => {
+                // Hide details immediately
+                details.style.opacity = '0';
+                details.style.visibility = 'hidden';
+
+                // Start closing animation after a short delay
+                timeout = setTimeout(() => {
+                    item.style.transition = 'all 0.3s ease';
+                    item.style.height = '200px';
+                    item.style.zIndex = '';
+                    item.style.boxShadow = '';
+                }, 150);
             });
         });
+    });
 
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('item-details')) {
-                e.target.classList.remove('active');
-            }
-        });
+
     </script>
 </body>
 </html>
