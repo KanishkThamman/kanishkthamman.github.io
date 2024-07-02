@@ -152,17 +152,42 @@
             box-shadow: 0 10px 20px rgba(177, 156, 217, 0.2);
         }
 
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item, .education-item, .certification-item, .project-item {
+            background-color: rgba(177, 156, 217, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 200px; /* Set a fixed initial height */
+        }
+
+        .experience-item:hover, .education-item:hover, .certification-item:hover, .project-item:hover {
+            height: auto;
+            min-height: 200px;
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(177, 156, 217, 0.2);
+        }
+
         .item-details {
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-            padding: 20px;
-            background-color: rgba(10, 10, 10, 0.95);
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            padding: 30px;
+            background-color: rgba(10, 10, 10, 0.95);
             overflow-y: auto;
         }
 
@@ -172,30 +197,29 @@
         .project-item:hover .item-details {
             opacity: 1;
             visibility: visible;
+            position: relative;
         }
 
-        .experience-item h3, .education-item h3, .certification-item h3, .project-item h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
-        .experience-item p, .education-item p, .certification-item p, .project-item p {
-            font-size: 16px;
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
-
-        .item-details ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-
-        .item-details li {
-            margin-bottom: 10px;
+        .item-link {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-top: 15px;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 20px;
             font-size: 14px;
-            line-height: 1.4;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .item-link:hover {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+        }
+
+        .item-link + .item-link {
+            margin-left: 10px;
         }
 
         .skills-list {
@@ -240,6 +264,7 @@
                 font-size: 36px;
             }
         }
+
 
     </style>
 </head>
@@ -289,7 +314,9 @@
                                 <li>Learned to identify and mitigate various types of cyber threats.</li>
                                 <li>Developed technical support skills specific to cybersecurity.</li>
                                 <li>Completed practical labs and simulations to apply cybersecurity concepts.</li>
+                                <li>Participated in online forums and study groups to enhance understanding.</li>
                             </ul>
+                            <a href="https://drive.google.com/file/d/120cr9mQZsdUdpwv5e-MiHl5t6Ytrz7Po/view" class="item-link" target="_blank">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -302,6 +329,7 @@
                                 <li>Learned about network audio routing, clocking, and redundancy.</li>
                                 <li>Practiced setting up and troubleshooting Dante networks.</li>
                             </ul>
+                            <a href="https://drive.google.com/file/d/19ufFwPTlODNjmy9RNBiUXOU3InUeco_T/view" class="item-link" target="_blank">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -314,6 +342,7 @@
                                 <li>Conducted security assessments and vulnerability testing.</li>
                                 <li>Developed skills in incident response and forensics.</li>
                             </ul>
+                            <a href="https://drive.google.com/file/d/1Rk4R9aT6JoDELKPNC7Y9_yg50HxCLS2l/view?usp=sharing" class="item-link" target="_blank">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -326,6 +355,7 @@
                                 <li>Earned 4 units of AVIXA CTS Credits.</li>
                                 <li>Developed skills in configuring, troubleshooting, and optimizing Q-Sys systems.</li>
                             </ul>
+                            <a href="https://drive.google.com/file/d/1odWia_koD6BwbK-4pWsmMNh3sRGTaDOX/view?usp=drivesdk" class="item-link" target="_blank">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -338,6 +368,7 @@
                                 <li>Conducted research and gathered relevant information to support consulting recommendations.</li>
                                 <li>Developed skills in risk assessment and mitigation strategies.</li>
                             </ul>
+                            <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/PwC%20US/4KqDALSkyRNPXjQGa_PwC%20US_6GD79jbdfB7tFeFTj_1700853864130_completion_certificate.pdf" class="item-link" target="_blank">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -350,6 +381,7 @@
                                 <li>Learned about software process improvement models, such as CMMI and ISO standards.</li>
                                 <li>Explored techniques for managing requirements, estimating project timelines, and tracking progress in Agile environments.</li>
                             </ul>
+                            <a href="https://drive.google.com/file/d/1AQI6nZfMkiA1fdyYaR3Bvpui3FFsBL4L/view?usp=sharing" class="item-link" target="_blank">Certification Link</a>
                         </div>
                     </div>
                 </div>
@@ -370,6 +402,8 @@
                                 <li>Analyzed potential applications and challenges of autonomous cyber defense.</li>
                                 <li>Presented findings to peers and faculty members, fostering academic discussion.</li>
                             </ul>
+                            <a href="https://docs.google.com/file/d/12kjSZp_8XxADhW4a_mzaIUkBWWJd2q95/edit?filetype=mspresentation" class="item-link" target="_blank">Presentation Link</a>
+                            <a href="https://media.licdn.com/dms/image/D562DAQGBb4i6NLUoXQ/profile-treasury-image-shrink_800_800/0/1719364265776?e=1720544400&v=beta&t=7LlY-nXp8JtX2iFS9Qi3-I7rbtklVg3Fi7Y4YY2ciA0" class="item-link" target="_blank">Picture of Me Presenting</a>
                         </div>
                     </div>
                     <div class="project-item">
@@ -383,6 +417,7 @@
                                 <li>Conducted data analysis and preprocessing on air quality datasets.</li>
                                 <li>Implemented and fine-tuned the KNN algorithm for accurate predictions.</li>
                             </ul>
+                            <a href="https://github.com/KanishkThamman/intel-project-air_polution_predictor-/tree/main" class="item-link" target="_blank">Project Repo Link</a>
                         </div>
                     </div>
                     <div class="project-item">
@@ -409,12 +444,12 @@
                                 <li>Provided support during rehearsals and performances by operating equipment and assisting performers.</li>
                                 <li>Participated in set construction, stage design, and prop management activities.</li>
                             </ul>
+                            <a href="https://drive.google.com/file/d/1ZBK8hMiHFhwJkymQEZ9aPhJxzbJBeGL4/view?usp=sharing" class="item-link" target="_blank">Poster I Helped Made</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
 
         <div class="section">
             <div class="section-content">
