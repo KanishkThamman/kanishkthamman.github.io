@@ -666,33 +666,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Three.js background animation
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-    
-            // Create a group to hold all 3D objects
-            const group = new THREE.Group();
-            scene.add(group);
-    
-            // Add more complex 3D shapes
-            const torusGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-            const torusMaterial = new THREE.MeshPhongMaterial({ color: 0xb19cd9 });
-            const torusKnot = new THREE.Mesh(torusGeometry, torusMaterial);
-            group.add(torusKnot);
-    
-            const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5);
-            const icosahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xbae1ff });
-            const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
-            icosahedron.position.set(-2, 1, -1);
-            group.add(icosahedron);
-    
-            const octahedronGeometry = new THREE.OctahedronGeometry(0.7);
-            const octahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xffb3ba });
-            const octahedron = new THREE.Mesh(octahedronGeometry, octahedronMaterial);
-            octahedron.position.set(2, -1, -2);
-            group.add(octahedron);
-    
+           
             // Add lights
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
             scene.add(ambientLight);
@@ -815,26 +789,6 @@
     <!-- Effects And 3d Stuff-->
      <script>
         document.addEventListener('DOMContentLoaded', () => {
-         // Three.js background animation
-         const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    camera.position.z = 5;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        renderer.render(scene, camera);
-    }
-    animate();
             // Resize handler
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
@@ -906,32 +860,6 @@
         const scrollY = window.scrollY;
         group.rotation.y = scrollY * 0.001;
         });
-
-        const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas'), alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-    const material = new THREE.MeshBasicMaterial({ color: 0xb19cd9, wireframe: true });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
-
-    camera.position.z = 5;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        torusKnot.rotation.x += 0.01;
-        torusKnot.rotation.y += 0.01;
-        renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
 
      </script>
     
