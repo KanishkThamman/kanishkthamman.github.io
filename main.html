@@ -129,7 +129,8 @@
         .item-details {
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
+            display: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
             position: absolute;
             top: 0;
             left: 0;
@@ -509,11 +510,11 @@
     
             // Hover functionality
             const items = document.querySelectorAll('.experience-item, .education-item, .certification-item, .project-item');
-    
+
             items.forEach(item => {
                 const details = item.querySelector('.item-details');
                 let timeout;
-    
+
                 item.addEventListener('mouseenter', () => {
                     clearTimeout(timeout);
                     items.forEach(otherItem => {
@@ -521,29 +522,38 @@
                             resetItem(otherItem);
                         }
                     });
-                    item.style.transition = 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                    item.style.transition = 'height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s ease';
                     item.style.height = `${item.scrollHeight}px`;
                     item.style.zIndex = '10';
                     item.style.boxShadow = '0 10px 20px rgba(177, 156, 217, 0.2)';
-                    setTimeout(() => {
-                        details.classList.add('visible');
-                    }, 150);
+                    requestAnimationFrame(() => {
+                        details.style.display = 'block';
+                        requestAnimationFrame(() => {
+                            details.style.opacity = '1';
+                            details.style.visibility = 'visible';
+                        });
+                    });
                 });
-    
+
                 item.addEventListener('mouseleave', () => {
-                    details.classList.remove('visible');
+                    details.style.opacity = '0';
+                    details.style.visibility = 'hidden';
+                    details.style.display = 'none';
                     timeout = setTimeout(() => {
                         resetItem(item);
-                    }, 200);
+                    }, 50); // Short delay to ensure content is hidden before animation starts
                 });
             });
-    
+
             function resetItem(item) {
-                item.style.transition = 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                const details = item.querySelector('.item-details');
+                item.style.transition = 'height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s ease';
                 item.style.height = '200px';
                 item.style.zIndex = '';
                 item.style.boxShadow = '';
-                item.querySelector('.item-details').classList.remove('visible');
+                details.style.opacity = '0';
+                details.style.visibility = 'hidden';
+                details.style.display = 'none';
             }
         });
     </script>
