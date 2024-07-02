@@ -210,6 +210,50 @@
             background-color: rgba(177, 156, 217, 0.2);
             transform: translateY(-3px);
         }
+        .file-popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .popup-content {
+            background-color: rgba(143, 120, 185, 0.3);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .close-popup {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-popup:hover,
+        .close-popup:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #fileViewer {
+            width: 100%;
+            height: calc(100% - 40px);
+            border: none;
+        }
+
 
         @media (max-width: 768px) {
             .grid-container {
@@ -290,7 +334,7 @@
                                 <br>
                                 <li>Participated in online forums and study groups to enhance understanding.</li>
                             </ul>
-                            <a href="assets/Certificates/Cisco Certified Support Technician Cybersecurity.pdf" class="item-link" target="_blank">Certification Link</a>
+                            <a href="#" class="item-link" data-file="assets/Certificates/Cisco Certified Support Technician Cybersecurity.pdf">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -313,7 +357,7 @@
                                 <br>
                                 <li>Implemented Dante systems in real-world audio projects.</li>
                             </ul>
-                            <a href="assets/Certificates/Dante Level 1 Certificate.pdf" class="item-link" target="_blank">Certification Link</a>
+                            <a href="#" class="item-link" data-file="assets/Certificates/Dante Level 1 Certificate.pdf">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -330,7 +374,7 @@
                                 <br>
                                 <li>Practiced implementing security measures and tools in IT environments.</li>
                             </ul>
-                            <a href="assets/Certificates/Information Technology Specialist in Cybersecurity.pdf" class="item-link" target="_blank">Certification Link</a>
+                            <a href="#" class="item-link" data-file="assets/Certificates/Information Technology Specialist in Cybersecurity.pdf">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -347,7 +391,7 @@
                                 <br>
                                 <li>Practiced creating and deploying Q-Sys designs for various applications.</li>
                             </ul>
-                            <a href="assets/Certificates/Q sys level one .pdf" class="item-link" target="_blank">Certification Link</a>
+                            <a href="#" class="item-link" data-file="assets/Certificates/Q sys level one .pdf">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -364,7 +408,7 @@
                                 <br>
                                 <li>Learned about industry best practices and regulatory compliance in cybersecurity.</li>
                             </ul>
-                            <a href="assets/Certificates/PwC US Cyber Security Consulting Simulation.pdf" class="item-link" target="_blank">Certification Link</a>
+                            <a href="#" class="item-link" data-file="assets/Certificates/PwC US Cyber Security Consulting Simulation.pdf">Certification Link</a>
                         </div>
                     </div>
                     <div class="certification-item">
@@ -387,7 +431,7 @@
                                 <br>
                                 <li>Explored techniques for managing requirements, estimating project timelines, and tracking progress in Agile environments.</li>
                             </ul>
-                            <a href="assets/Certificates/Coursera Software Processes and Agile Practices.pdf" class="item-link" target="_blank">Certification Link</a>
+                            <a href="#" class="item-link" data-file="assets/Certificates/Coursera Software Processes and Agile Practices.pdf">Certification Link</a>
                         </div>
                     </div>
                 </div>
@@ -443,7 +487,7 @@
                                 <br>
                                 <li>Developed teamwork and collaboration skills by working with diverse team members.</li>
                             </ul>
-                            <a href="assets/Pictures/Shrek poster.jpg" class="item-link" target="_blank">Poster I Helped Make</a>
+                            <a href="#" class="item-link" data-file="assets/Pictures/Shrek poster.jpg">Poster I Helped Make</a>
                         </div>
                     </div>
                     <div class="project-item">
@@ -462,8 +506,8 @@
                                 <br>
                                 <li>Managed time constraints, project deadlines, and resource limitations effectively.</li>
                             </ul>
-                            <a href="assets/Projects/Application of AI in CyberSecurity-CyberSafe.pptx" class="item-link" target="_blank">Presentation Link</a>
-                            <a href="assets/Pictures/Presenting_Picture.jpeg" class="item-link" target="_blank">Picture of Me Presenting</a>
+                            <a href="#" class="item-link" data-file="assets/Projects/Application of AI in CyberSecurity-CyberSafe.pdf">Presentation Link</a>
+                            <a href="#" class="item-link" data-file="assets/Pictures/Presenting_Picture.jpeg">Picture of Me Presenting</a>
                         </div>
                     </div>
                     <div class="project-item">
@@ -492,6 +536,14 @@
                 </div>
             </div>
         </section>
+
+        <!-- File Popup -->
+        <div id="filePopup" class="file-popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <iframe id="fileViewer" src="" frameborder="0"></iframe>
+            </div>
+        </div>
 
 
 
@@ -633,6 +685,40 @@
                 details.style.visibility = 'hidden';
                 details.style.display = 'none';
             }
+        });
+    </script>
+<!-- Pop-Up script-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.item-link');
+            const popup = document.getElementById('filePopup');
+            const fileViewer = document.getElementById('fileViewer');
+            const closePopup = document.querySelector('.close-popup');
+
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('target') === '_blank') {
+                        // For external links (like GitHub), don't prevent default behavior
+                        return;
+                    }
+                    e.preventDefault();
+                    const filePath = this.getAttribute('data-file');
+                    fileViewer.src = filePath;
+                    popup.style.display = 'block';
+                });
+            });
+
+            closePopup.addEventListener('click', function() {
+                popup.style.display = 'none';
+                fileViewer.src = '';
+            });
+
+            window.addEventListener('click', function(e) {
+                if (e.target == popup) {
+                    popup.style.display = 'none';
+                    fileViewer.src = '';
+                }
+            });
         });
     </script>
     
