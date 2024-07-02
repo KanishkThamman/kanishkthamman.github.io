@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanishk Thamman - Cybersecurity & AI Specialist</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
     <style>
                 
         :root {
@@ -301,6 +302,47 @@
         .certification-item:hover, .project-item:hover {
             transform: scale(1.05) rotateY(5deg);
         }
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .section {
+            transform: perspective(1000px) rotateX(5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: perspective(1000px) rotateX(0deg) translateZ(20px);
+        }
+
+        .certification-item, .project-item {
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .item-front, .item-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .item-back {
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            max-height: 100%;
+        }
+
+        .certification-item.flipped, .project-item.flipped {
+            transform: rotateY(180deg);
+        }
+
     </style>
 </head>
 <body>
@@ -748,78 +790,124 @@
     <!-- Effects And 3d Stuff-->
      <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Three.js background animation
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
-            renderer.setSize(window.innerWidth, window.innerHeight);
+         // Three.js background animation
+         const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-            // Create a group to hold all 3D objects
-            const group = new THREE.Group();
-            scene.add(group);
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
 
-            // Add 3D shapes
-            const torusGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-            const torusMaterial = new THREE.MeshPhongMaterial({ color: 0xb19cd9 });
-            const torusKnot = new THREE.Mesh(torusGeometry, torusMaterial);
-            group.add(torusKnot);
+    camera.position.z = 5;
 
-            const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5);
-            const icosahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xbae1ff });
-            const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
-            icosahedron.position.set(-2, 1, -1);
-            group.add(icosahedron);
-
-            const octahedronGeometry = new THREE.OctahedronGeometry(0.7);
-            const octahedronMaterial = new THREE.MeshPhongMaterial({ color: 0xffb3ba });
-            const octahedron = new THREE.Mesh(octahedronGeometry, octahedronMaterial);
-            octahedron.position.set(2, -1, -2);
-            group.add(octahedron);
-
-            // Add lights
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-            scene.add(ambientLight);
-
-            const pointLight = new THREE.PointLight(0xffffff, 1);
-            pointLight.position.set(5, 5, 5);
-            scene.add(pointLight);
-
-            camera.position.z = 5;
-
-            function animate() {
-                requestAnimationFrame(animate);
-
-                // Rotate the entire group
-                group.rotation.x += 0.001;
-                group.rotation.y += 0.002;
-
-                // Rotate individual objects
-                torusKnot.rotation.x += 0.01;
-                icosahedron.rotation.y += 0.02;
-                octahedron.rotation.z += 0.015;
-
-                renderer.render(scene, camera);
-            }
-            animate();
-
+    function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+    animate();
             // Resize handler
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
-
             // Parallax effect
+            let lastScrollTop = 0;
+            let animationApplied = false;
+
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
+                const scrollingDown = scrollY > lastScrollTop;
+
                 document.querySelectorAll('.parallax').forEach(element => {
-                    const speed = element.dataset.speed || 0.5;
-                    element.style.transform = `translateY(${scrollY * speed}px)`;
+                    const speed = element.dataset.speed || 0.1;
+                    if (scrollingDown && !animationApplied) {
+                        element.style.transform = `translateY(${scrollY * speed}px)`;
+                        if (scrollY > 80) { // Adjust this value to determine when the animation should be considered "applied"
+                            animationApplied = true;
+                        }
+                    }
+                });
+
+                lastScrollTop = scrollY <= 0 ? 0 : scrollY;
+            });
+
+            // Flip effect for certification and project items
+            const items = document.querySelectorAll('.certification-item, .project-item');
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.toggle('flipped');
                 });
             });
 
-            // Keep your existing popup functionality and other JavaScript here
+            // File popup functionality
+            const links = document.querySelectorAll('.item-link');
+            const popup = document.getElementById('filePopup');
+            const fileViewer = document.getElementById('fileViewer');
+            const closePopup = document.querySelector('.close-popup');
+
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('target') === '_blank') {
+                        // For external links (like GitHub), don't prevent default behavior
+                        return;
+                    }
+                    e.preventDefault();
+                    const filePath = this.getAttribute('data-file');
+                    fileViewer.src = filePath;
+                    popup.style.display = 'block';
+                });
+            });
+
+            closePopup.addEventListener('click', function() {
+                popup.style.display = 'none';
+                fileViewer.src = '';
+            });
+
+            window.addEventListener('click', function(e) {
+                if (e.target == popup) {
+                    popup.style.display = 'none';
+                    fileViewer.src = '';
+                }
+            });
         });
+
+        window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        group.rotation.y = scrollY * 0.001;
+        });
+
+        const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+    const material = new THREE.MeshBasicMaterial({ color: 0xb19cd9, wireframe: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        torusKnot.rotation.x += 0.01;
+        torusKnot.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
      </script>
     
 </body>
