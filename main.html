@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - Cybersecurity & AI Specialist</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --primary-color: #b19cd9;
+            --secondary-color: #bae1ff;
+            --accent-color: #ffb3ba;
+        }
+
+        body, html { 
+            margin: 0; 
+            padding: 0;
+            height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .content {
+            position: relative;
+        }
+
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #background-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .name-overlay {
+            text-align: center;
+            z-index: 2;
+            background: rgba(10, 10, 10, 0.7);
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(177, 156, 217, 0.3);
+        }
+
+        .name-overlay h1 { 
+            font-size: 54px; 
+            margin: 0; 
+            letter-spacing: 6px;
+            color: var(--primary-color);
+            text-shadow: 0 0 15px rgba(177, 156, 217, 0.5);
+        }
+
+        .name-overlay p { 
+            font-size: 20px; 
+            margin: 15px 0 0; 
+            opacity: 0.8;
+            letter-spacing: 3px;
+            color: var(--secondary-color);
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 40px;
+            box-sizing: border-box;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .experience-item, .education-item, .certification-item, .project-item {
+            background-color: rgba(177, 156, 217, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item:hover, .education-item:hover, .certification-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(177, 156, 217, 0.1);
+        }
+
+        .item-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .experience-item:hover .item-details, 
+        .education-item:hover .item-details, 
+        .certification-item:hover .item-details, 
+        .project-item:hover .item-details {
+            opacity: 1;
+        }
+
+        .experience-item h3, .education-item h3, .certification-item h3, .project-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .experience-item p, .education-item p, .certification-item p, .project-item p {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skills-list li {
+            background-color: rgba(177, 156, 217, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="hero">
+            <canvas id="background-canvas"></canvas>
+            <div class="name-overlay">
+                <h1>KANISHK THAMMAN</h1>
+                <p>Aspiring Cybersecurity & AI Specialist</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-content">
+                <h2>Experience</h2>
+                <div class="grid-container">
+                    <div class="experience-item">
+                        <h3>Computer SCI Teacher - Code Ninjas</h3>
+                        <p>Jul 2023 - May 2024 · Frisco, Texas, United States · On-site</p>
+                        <div class="item-details">
+                            <p>Delivered middle school computer science curriculum, focusing on fundamental concepts such as algorithms and coding principles. Instructed participants in Roblox fundamentals during summer camps, guiding them through game development, scripting, and collaborative projects. Adapted teaching style to cater to diverse learning styles, providing individualized support within the framework of the given curriculum.</p>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Python Developer - Visard Org</h3>
+                        <p>May 2022 - Jun 2022 · Internship</p>
+                        <div class="item-details">
+                            <p>Developed innovative UI/UX designs for e-commerce websites using Python. Collaborated closely with stakeholders to implement tailored solutions. Participated in team meetings to discuss project requirements and progress. Conducted code reviews and provided constructive feedback to team members.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-content">
+                <h2>Certifications & Achievements</h2>
+                <div class="grid-container">
+                    <div class="certification-item">
+                        <h3>Cisco Certified Support Technician Cybersecurity</h3>
+                        <p>Issued May 2024</p>
+                        <div class="item-details">
+                            <p>Gained comprehensive knowledge of cybersecurity principles and practices. Learned to identify and mitigate various types of cyber threats. Developed technical support skills specific to cybersecurity.</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <h3>Dante Certification Level 1</h3>
+                        <p>Issued May 2024 · Expires May 2027</p>
+                        <div class="item-details">
+                            <p>Gained in-depth knowledge of Dante audio networking technology. Proficiency in using Dante Controller and configuring Dante devices. Understanding of network audio routing, clocking, and redundancy.</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <h3>Information Technology Specialist in Cybersecurity</h3>
+                        <p>Issued May 2024 · Expires May 2027</p>
+                        <div class="item-details">
+                            <p>Acquired knowledge in key areas of cybersecurity including network security, cyber operations, and threat mitigation. Configured and managed security measures for IT systems and networks. Conducted security assessments and vulnerability testing.</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <h3>Q-Sys Level One Certified</h3>
+                        <p>Issued May 2024 · Expires May 2027</p>
+                        <div class="item-details">
+                            <p>Completed rigorous training in building networked audio systems using the QSC ecosystem. Implemented optimized solutions to streamline audiovisual operations and enhance user experiences. Earned 4 units of AVIXA CTS Credits.</p>
+                        </div>
+                    </div>
+                    <div class="certification-item">
+                        <h3>PwC US - Cyber Security Consulting Job Simulation</h3>
+                        <p>Issued Nov 2023</p>
+                        <div class="item-details">
+                            <p>Participated in realistic scenarios and case studies relevant to cyber security consulting. Collaborated with team members to analyze security threats and propose effective solutions. Conducted research and gathered relevant information to support consulting recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-content">
+                <h2>Projects</h2>
+                <div class="grid-container">
+                    <div class="project-item">
+                        <h3>Exploring the future implications and applications of Autonomous Cyber Defense</h3>
+                        <p>Jun 2024</p>
+                        <div class="item-details">
+                            <p>Made a presentation on the future implications of Autonomous cyber defense at Purdue University over the summer during the Cyber safe program. Presented it to my peers in the program and multiple members of faculty.</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <h3>An Air Quality Predictor Model based on a KNN classifier</h3>
+                        <p>Apr 2022 - Jul 2022</p>
+                        <div class="item-details">
+                            <p>Created a machine learning model that predicts the Air Quality Index (AQI) and other air quality values using KNN classifier. Completed this project as part of the Intel AI Readiness bootcamp and received dedicated mentorship from an industry expert.</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <h3>School Gym Audio System Project</h3>
+                        <p>2023</p>
+                        <div class="item-details">
+                            <p>Collaborated with a team to enhance the audio systems in the school gymnasium. Assisted in reworking the Q-Sys design, including the configuration of audio components, signal routing, and system integration. Optimized audio performance and streamlined operational workflows in the gymnasium environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-content">
+                <h2>Skills</h2>
+                <ul class="skills-list">
+                    <li>Cybersecurity</li>
+                    <li>Artificial Intelligence (AI)</li>
+                    <li>Machine Learning</li>
+                    <li>Python</li>
+                    <li>Data Science</li>
+                    <li>Network Security</li>
+                    <li>Software Development</li>
+                    <li>UI/UX Design</li>
+                    <li>Project Management</li>
+                    <li>Agile Methodologies</li>
+                    <li>Roblox Development</li>
+                    <li>Teaching</li>
+                    <li>Problem Solving</li>
+                    <li>Critical Thinking</li>
+                    <li>Teamwork</li>
+                    <li>Communication</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Three.js background animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas') });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        for (let i = 0; i < 10000; i++) {
+            vertices.push(THREE.MathUtils.randFloatSpread(2000));
+            vertices.push(THREE.MathUtils.randFloatSpread(2000));
+            vertices.push(THREE.MathUtils.randFloatSpread(2000));
+        }
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+        const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 }));
+        scene.add(particles);
+
+        camera.position.z = 1000;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.x += 0.0001;
+            particles.rotation.y += 0.0001;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
