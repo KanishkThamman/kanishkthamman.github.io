@@ -121,6 +121,20 @@
             height: 200px;
         }
 
+        .experience-item::before, .education-item::before, .certification-item::before, .project-item::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            pointer-events: none;
+        }
+
+        .experience-item:hover::before, .education-item:hover::before, .certification-item:hover::before, .project-item:hover::before {
+            pointer-events: auto;
+        }
+
         .grid-container:hover .experience-item:not(:hover),
         .grid-container:hover .education-item:not(:hover),
         .grid-container:hover .certification-item:not(:hover),
@@ -132,6 +146,7 @@
             transform: scale(1.05);
             z-index: 10;
             height: auto;
+            min-height: 200px;
             max-height: 80vh;
             overflow-y: auto;
             box-shadow: 0 10px 20px rgba(177, 156, 217, 0.2);
@@ -139,7 +154,8 @@
 
         .item-details {
             opacity: 0;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
             padding: 20px;
             background-color: rgba(10, 10, 10, 0.95);
             position: absolute;
@@ -155,6 +171,7 @@
         .certification-item:hover .item-details, 
         .project-item:hover .item-details {
             opacity: 1;
+            visibility: visible;
         }
 
         .experience-item h3, .education-item h3, .certification-item h3, .project-item h3 {
