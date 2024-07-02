@@ -43,8 +43,6 @@ git clone https://github.com/your-username/portfolio-website.git
 # Navigate to the project directory
 cd portfolio-website
 
-If you're using a package manager for dependencies (e.g., npm, yarn):
-bash
 # Install dependencies
 npm install 
 ```
