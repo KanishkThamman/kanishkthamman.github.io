@@ -95,6 +95,60 @@
                 grid-template-columns: 1fr;
             }
         }
+        .home-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #141414e8;/* Changed to a cool blue color */
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            border-color: #7986CB;
+            
+        }
+
+        .home-button:hover {
+            background-color: transparent;
+            color: #7986CB;
+            border-color: #7986CB;
+        }
+
+        .home-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-icon {
+            display: inline-block;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .home-button:hover .button-icon {
+            transform: translateX(4px);
+        }
+
+        .home-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover::before {
+            left: 100%;
+        }
     </style>
 </head>
 <body>
@@ -229,7 +283,12 @@
                     </div>
                 </div>
             </div>
+            <a href="index.html" class="home-button">
+                Go Home
+                <span class="button-icon">→</span>
+            </a>
         </div>
+
     </div>
 </body>
 </html>
