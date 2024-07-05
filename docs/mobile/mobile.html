@@ -104,6 +104,120 @@
             height: 3px;
             background-color: var(--accent-color);
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .experience-item, .education-item, .certification-item, .project-item {
+            background-color: rgba(177, 156, 217, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .item-details {
+            opacity: 0;
+            visibility: hidden;
+            display: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            background-color: rgba(177, 156, 217, 0.05);
+            overflow-y: auto;
+        }
+
+        .experience-item:hover .item-details,
+        .education-item:hover .item-details,
+        .certification-item:hover .item-details,
+        .project-item:hover .item-details {
+            opacity: 1;
+            visibility: visible;
+            position: static;
+        }
+
+        .experience-item h3, .education-item h3, .certification-item h3, .project-item h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .item-details ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .item-details p {
+            margin-top: 0;
+        }
+
+        .item-link {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-top: 15px;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .item-link:hover {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skills-list li {
+            background-color: rgba(177, 156, 217, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .skills-list li:hover {
+            background-color: rgba(177, 156, 217, 0.2);
+            transform: translateY(-3px);
+        }
+
+        @media (min-width: 769px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .name-overlay h1 {
+                font-size: 54px;
+            }
+
+            .name-overlay p {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 80px 40px;
+            }
+
+            h2 {
+                font-size: 42px;
+            }
+        }
 
         </style>
 
