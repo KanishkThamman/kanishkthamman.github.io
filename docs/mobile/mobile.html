@@ -218,6 +218,110 @@
                 font-size: 42px;
             }
         }
+        .view-all-certs {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #141414e8;/* Changed to a cool blue color */
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            border-color: #7986CB;
+            
+        }
+
+        .view-all-certs:hover {
+            background-color: transparent;
+            color: #7986CB;
+            border-color: #7986CB;
+        }
+
+        .view-all-certs:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-icon {
+            display: inline-block;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .view-all-certs:hover .button-icon {
+            transform: translateX(4px);
+        }
+
+        .view-all-certs::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .view-all-certs:hover::before {
+            left: 100%;
+        }
+
+        /* adding css to prevent "mirror effect" on mobile devices in contaners and some clean up for mobile */
+
+        .certification-item, .project-item {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .certification-item.flipped, .project-item.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .item-front, .item-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden; /* For Safari */
+        }
+
+        .item-back {
+            transform: rotateY(180deg);
+        }
+        @media (max-width: 768px) {
+            .certification-item, .project-item {
+                height: auto;
+                min-height: 200px;
+            }
+
+            .item-front, .item-back {
+                position: relative;
+                transform: none;
+            }
+
+            .item-back {
+                display: none;
+            }
+
+            .certification-item.flipped .item-front,
+            .project-item.flipped .item-front {
+                display: none;
+            }
+
+            .certification-item.flipped .item-back,
+            .project-item.flipped .item-back {
+                display: block;
+                transform: none;
+            }
+        }
 
         </style>
 
@@ -375,7 +479,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="ciirts.html" class="view-all-certs">
+                <a href="./ciirts_mobile.html" class="view-all-certs">
                     View All Certificates
                     <span class="button-icon">→</span>
                 </a>
@@ -788,7 +892,37 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-     </script>
+    </script>
+
+          <!-- Adding another script to prevent mobile "Mirror effect" on the contanier-->
+
+    <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const items = document.querySelectorAll('.certification-item, .project-item');
+                let touchStartX = 0;
+                let touchEndX = 0;
+            
+                items.forEach(item => {
+                    item.addEventListener('touchstart', e => {
+                        touchStartX = e.changedTouches[0].screenX;
+                    });
+            
+                    item.addEventListener('touchend', e => {
+                        touchEndX = e.changedTouches[0].screenX;
+                        if (Math.abs(touchStartX - touchEndX) < 10) { // Detect tap (not swipe)
+                            item.classList.toggle('flipped');
+                        }
+                    });
+            
+                    // Remove click event listener for touch devices
+                    if (!('ontouchstart' in window)) {
+                        item.addEventListener('click', () => {
+                            item.classList.toggle('flipped');
+                        });
+                    }
+                });
+            });
+    </script>
     
 </body>
 </html>
