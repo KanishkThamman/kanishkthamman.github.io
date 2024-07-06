@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications & Extracurriculars - Kanishk Thamman</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --primary-color: #b19cd9;
+            --secondary-color: #bae1ff;
+            --accent-color: #ffb3ba;
+        }
+
+        body, html { 
+            margin: 0; 
+            padding: 0;
+            height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .content {
+            position: relative;
+            padding: 80px 40px;
+            box-sizing: border-box;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .certification-item, .extracurricular-item {
+            background-color: rgba(177, 156, 217, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification-item:hover, .extracurricular-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(177, 156, 217, 0.1);
+        }
+
+        .item-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .certification-item:hover .item-details, .extracurricular-item:hover .item-details {
+            opacity: 1;
+        }
+
+        .certification-item h3, .extracurricular-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .certification-item p, .extracurricular-item p {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="section-content">
+            <h2>Certifications & Extracurriculars</h2>
+            <div class="grid-container">
+                <div class="certification-item">
+                    <h3>Computer SCI Instructor</h3>
+                    <div class="item-details">
+                        <p>Delivered middle school computer science curriculum, focusing on fundamental concepts such as algorithms and coding principles. Instructed participants in Roblox fundamentals during summer camps, guiding them through game development, scripting, and collaborative projects.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Python Developer Intern, Visard Org</h3>
+                    <div class="item-details">
+                        <p>Developed innovative UI/UX designs for e-commerce websites using Python. Collaborated closely with stakeholders to implement tailored solutions. Participated in team meetings to discuss project requirements and progress.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Cisco Certified Support Technician Cybersecurity</h3>
+                    <div class="item-details">
+                        <p>Gained comprehensive knowledge of cybersecurity principles and practices. Learned to identify and mitigate various types of cyber threats. Developed technical support skills specific to cybersecurity.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Dante Certification Level 1</h3>
+                    <div class="item-details">
+                        <p>Gained in-depth knowledge of Dante audio networking technology. Proficiency in using Dante Controller and configuring Dante devices. Understanding of network audio routing, clocking, and redundancy.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Information Technology Specialist in Cybersecurity</h3>
+                    <div class="item-details">
+                        <p>Acquired knowledge in key areas of cybersecurity including network security, cyber operations, and threat mitigation. Configured and managed security measures for IT systems and networks. Conducted security assessments and vulnerability testing.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Q-Sys Level One Certified</h3>
+                    <div class="item-details">
+                        <p>Completed rigorous training in building networked audio systems using the QSC ecosystem. Implemented optimized solutions to streamline audiovisual operations and enhance user experiences. Earned 4 units of AVIXA CTS Credits.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>CompTIA Computer Security Support Fundamentals</h3>
+                    <div class="item-details">
+                        <p>Gained fundamental knowledge in computer security support. Learned to identify and resolve security issues, and implement basic security measures for IT systems and networks.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>PwC US - Cyber Security Consulting Job Simulation</h3>
+                    <div class="item-details">
+                        <p>Participated in realistic scenarios and case studies relevant to cyber security consulting. Collaborated with team members to analyze security threats and propose effective solutions. Conducted research and gathered relevant information to support consulting recommendations.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Verizon - Cloud Platform Job Simulation</h3>
+                    <div class="item-details">
+                        <p>Participated in a simulation focused on cloud platform management and operations. Gained practical experience in deploying and managing cloud-based services, ensuring optimal performance and security.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Client Needs and Software Requirements</h3>
+                    <div class="item-details">
+                        <p>Learned to identify and analyze client needs and translate them into software requirements. Gained skills in requirement gathering, documentation, and stakeholder communication.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Software Processes and Agile Practices</h3>
+                    <div class="item-details">
+                        <p>Acquired knowledge in software development processes and agile practices. Learned to implement agile methodologies to improve project management and delivery.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Cybersecurity Fundamentals</h3>
+                    <div class="item-details">
+                        <p>Gained fundamental knowledge in cybersecurity principles and practices. Learned to identify and mitigate various types of cyber threats.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Introduction to Software Product Management</h3>
+                    <div class="item-details">
+                        <p>Learned the basics of software product management, including product lifecycle, requirement analysis, and stakeholder management.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Accenture Nordics - Consultant Job Simulation</h3>
+                    <div class="item-details">
+                        <p>Participated in a simulation focused on consulting in the Nordics region. Gained practical experience in consulting strategies, client engagement, and project management.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Intel Corporation - AI For Youth Program - CV</h3>
+                    <div class="item-details">
+                        <p>Completed the AI for Youth program focused on computer vision. Developed skills in AI and computer vision applications.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Forage - Mastercard - Cybersecurity Job Simulation</h3>
+                    <div class="item-details">
+                        <p>Participated in a simulation focused on cybersecurity at Mastercard. Gained practical experience in identifying and mitigating security threats, and implementing security measures.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Intel Corporation - AI for Youth Program - Data Science</h3>
+                    <div class="item-details">
+                        <p>Completed the AI for Youth program focused on data science. Developed skills in AI and data science applications.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>School Gym Audio System Project</h3>
+                    <div class="item-details">
+                        <p>Designed and implemented an audio system for the school gym. Worked on system configuration, installation, and testing to ensure optimal performance.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Theater Shows - Technical & Marketing Team</h3>
+                    <div class="item-details">
+                        <p>Participated in the technical and marketing team for theater shows. Worked on sound and lighting setups, as well as promotional activities for the shows.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>8 Week AI Workshop - UTD Dallas</h3>
+                    <div class="item-details">
+                        <p>Completed an 8-week AI workshop at UTD Dallas. Developed practical skills in AI applications and technologies.</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <h3>Purdue University - Cybersafe Summer Program</h3>
+                    <div class="item-details">
+                        <p>Participated in the Cybersafe summer program at Purdue University. Gained knowledge in cybersecurity principles, practices, and technologies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
