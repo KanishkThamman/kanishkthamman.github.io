@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanishk Thamman - Cybersecurity & AI Specialist</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
             --bg-color: #0a0a0a;
@@ -322,18 +323,120 @@
                 transform: none;
             }
         }
+        #typewriter {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-family: monospace;
+            border-right: 2px solid #000;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink-caret 0.75s step-end infinite;
+            padding: 0.5em;
+            max-width: 90vw;
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: -1;
+        }
+        .counter-container {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.counter {
+  font-size: 48px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  filter: blur(20px);
+  opacity: 0.5;
+  border-radius: 20px;
+  z-index: 1;
+  animation: moveGlow 4s linear infinite;
+}
+
+@keyframes moveGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.scroll-down-arrow {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.scroll-down-arrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -25%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
 
         </style>
 
+
 <body>
+<div class="glow-container">
+    <div class="glow-effect"></div>
         <canvas id="background-canvas"></canvas>
         <div class="content">
             <div class="hero">
+<div class="glow"></div>
                 <div class="name-overlay">
-                    <h1>KANISHK THAMMAN</h1>
-                    <p>Aspiring Cybersecurity & AI Specialist</p>
+                
+                    <div id="typewriter"></div>
                 </div>
             </div>
+            <div class="scroll-down-arrow"></div>
+    
+        
+    
 
         <div class="section">
             <div class="section-content">
@@ -620,6 +723,9 @@
             </div>
         </div>
     </div>
+</div>
+        
+
 
     
     <script>
@@ -923,6 +1029,84 @@
                 });
             });
     </script>
+            <!-- Typewriter effect js code-->
+            <script>
+            
+            const typewriter = document.getElementById('typewriter');
+            const text1 = "Hi, I am Kanishk Thamman";
+            const text2 = "I am a Aspiring Cybersecurity Engineer";
+            const text3 = "I am a Aspiring AI Specialist";
+            const text4 = "I am a Audio/Lighting Enthusiast";
+
+            function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            async function typeText(text) {
+            for (let char of text) {
+                typewriter.innerHTML += char;
+                await sleep(100);
+            }
+            }
+
+            async function backspace(count) {
+            for (let i = 0; i < count; i++) {
+                typewriter.innerHTML = typewriter.innerHTML.slice(0, -1);
+                await sleep(50);
+            }
+            }
+
+            async function typewriterEffect() {
+            await typeText(text1);
+            await sleep(100);
+            typewriter.innerHTML += '<br><br>'; // Add two line breaks here
+            
+            await typeText(text2);
+            await sleep(100);
+            await backspace("Aspiring Cybersecurity Engineer".length);
+            
+            await typeText("Aspiring AI Specialist");
+            await sleep(100);
+            await backspace("Aspiring AI Specialist".length);
+            
+            await typeText("Audio/Lighting Enthusiast");
+            }
+
+            typewriterEffect();
+            </script>
+
+            <!-- Particles.js -->
+            <script>
+                const counter = document.querySelector('.counter');
+                let count = 0;
+                const target = 1234; // Your target number
+                const duration = 2000; // Duration in milliseconds
+
+                const updateCounter = () => {
+                const increment = target / (duration / 16); // 60 FPS
+                if (count < target) {
+                    count += increment;
+                    counter.textContent = Math.floor(count);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+                };
+
+                updateCounter();
+            </script> 
+
+            <!-- Scroll Down Arrow -->
+            <script>
+                window.addEventListener('scroll', () => {
+                    const arrow = document.querySelector('.scroll-down-arrow');
+                    if (window.scrollY > 100) { // Adjust this value as needed
+                        arrow.style.opacity = '0';
+                    } else {
+                        arrow.style.opacity = '1';
+                    }
+                });
+            </script>
     
 </body>
 </html>
