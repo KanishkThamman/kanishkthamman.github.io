@@ -82,6 +82,45 @@
         .back-link:hover {
             background-color: #2980b9;
         }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .cert-link {
+        color: #3498db;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .cert-link:hover {
+        text-decoration: underline;
+    }
     </style>
 </head>
 <body>
@@ -107,6 +146,11 @@
                 <a href="https://github.com/KanishkThamman/Iris_AI_model_multiclass" target="_blank">View on GitHub</a>
             </div>
             <div class="project-card">
+                <h3>Presentaion On Autonomous Cyber Defence</h3>
+                <p>A Presentaion done as part of the application based CyberSafe program hosted by Purdue University on implications and meaning of AI in Cybersecurity for the future. This presentaion was presented to some of the staff, porfferssors, and peers at Purdue University</p>
+                <a href="#" class="cert-link" data-cert="./assets\Projects\Application of AI in CyberSecurity-CyberSafe.pdf">View Presentaion PDF</a>
+            </div>
+            <div class="project-card">
                 <h3>Binary Classification Indian Liver Patient Records</h3>
                 <p>A binary classification model to predict liver disease in patients based on medical records, showcasing skills in healthcare data analysis.</p>
                 <a href="https://github.com/KanishkThamman/Binary-Classification-Indian-Liver-Patient-Records" target="_blank">View on GitHub</a>
@@ -121,14 +165,21 @@
                 <p>An AI model to predict air pollution levels, developed as part of an Intel project, showcasing application of ML in environmental science.</p>
                 <a href="https://github.com/KanishkThamman/intel-project-air_polution_predictor-" target="_blank">View on GitHub</a>
             </div>
+            
         </div>
 
         <div class="cool-feature">
             <h2>ML Quote of the Day</h2>
             <div id="ml-quote"></div>
         </div>
-
+        
         <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="certFrame" style="width:100%;height:500px;border:none;"></iframe>
+        </div>
     </div>
 
     <script>
@@ -145,6 +196,37 @@
         }
 
         document.getElementById('ml-quote').textContent = getRandomQuote();
+        
+         // Certificate pop-up logic
+        const modal = document.getElementById("certModal");
+        const certFrame = document.getElementById("certFrame");
+        const certLinks = document.querySelectorAll(".cert-link");
+        const closeBtn = document.querySelector(".close");
+
+        certLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const certUrl = this.getAttribute("data-cert");
+                if (certUrl.endsWith('.pdf')) {
+                    certFrame.src = certUrl;
+                    modal.style.display = "block";
+                } else {
+                    window.location.href = certUrl;
+                }
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            certFrame.src = "";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                certFrame.src = "";
+            }
+        }
     </script>
 </body>
 </html>

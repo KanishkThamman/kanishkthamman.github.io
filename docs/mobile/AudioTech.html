@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - Audio Tech Skills</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Caveat:wght@700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F0F4F8, #E0E8F0);
+            color: #2C3E50;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2 {
+            color: #34495E;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .skill-description {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-left: 5px solid #A3E4D7;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #34495E;
+        }
+        .cool-feature {
+            margin-top: 50px;
+            text-align: center;
+        }
+        #audio-quote {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: #34495E;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .cert-link {
+            color: #3498db;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .cert-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Audio Tech Skills</h1>
+        
+        <div class="skill-description">
+            <p>Through hands-on experience and professional development, I have acquired the following key skills in audio technology:</p>
+            <ul>
+                <li>In-depth knowledge of Dante audio networking technology</li>
+                <li>Technical support skills specific to audio networking issues</li>
+                <li>Understanding of network audio routing, clocking, and redundancy</li>
+                <li>Team collaboration and peer-to-peer learning</li>
+                <li>Proficiency in QSC ecosystem and networked audio systems</li>
+                <li>Experience in audio system design, configuration, and troubleshooting</li>
+            </ul>
+        </div>
+
+        <h2>Certifications and Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Dante Level 1 Certification</h3>
+                <p>Achieved proficiency in Dante audio networking technology, demonstrating expertise in digital audio routing and system configuration.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Dante Level 1 Certificate.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>QSC Q-SYS Level 1 Certification</h3>
+                <p>Gained in-depth knowledge of the QSC ecosystem and networked audio systems, including configuration, troubleshooting, and optimization of audiovisual systems.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Q sys level one .pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Gym Renovation Audio Project</h3>
+                <p>Was part of a team of 2 to perform a audio system upgrade for the school gymnasium and fix some problems, implementing QSC technologies to enhance sound quality and system flexibility.</p>
+            </div>
+            <div class="project-card">
+                <h3>Audio Crew for Two Shows</h3>
+                <p>Served as an audio crew member for two theater productions, gaining hands-on experience in microphone techniques, and real-time troubleshooting in a performance environment.</p>
+            </div>
+        </div>
+
+        <div class="cool-feature">
+            <h2>Audio Tech Quote of the Day</h2>
+            <div id="audio-quote"></div>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="certFrame" style="width:100%;height:500px;border:none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const audioQuotes = [
+            "The best sound is the sound that best serves the story. - Randy Thom",
+            "Audio is what happens between the speakers. - Rupert Neve",
+            "The difference between the right word and the almost right word is the difference between lightning and a lightning bug. - Mark Twain",
+            "If it sounds good, it is good. - Duke Ellington",
+            "The most important thing in communication is hearing what isn't said. - Peter Drucker"
+        ];
+
+        function getRandomQuote() {
+            return audioQuotes[Math.floor(Math.random() * audioQuotes.length)];
+        }
+
+        document.getElementById('audio-quote').textContent = getRandomQuote();
+
+        // Certificate pop-up logic
+        const modal = document.getElementById("certModal");
+        const certFrame = document.getElementById("certFrame");
+        const certLinks = document.querySelectorAll(".cert-link");
+        const closeBtn = document.querySelector(".close");
+
+        certLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const certUrl = this.getAttribute("data-cert");
+                if (certUrl.endsWith('.pdf')) {
+                    certFrame.src = certUrl;
+                    modal.style.display = "block";
+                } else {
+                    window.location.href = certUrl;
+                }
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            certFrame.src = "";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                certFrame.src = "";
+            }
+        }
+    </script>
+</body>
+</html>
