@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - IT Skills</title>
+    <link rel="stylesheet" href="./Certs_Page_style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>IT Skills</h1>
+        
+        <div class="skill-description">
+            <p>Through hands-on experience and professional development, I have acquired the following key skills in Information Technology:</p>
+            <ul>
+                <li>Proficiency in various programming languages and web development frameworks, with a focus on Python and its applications in data science and machine learning</li>
+                <li>Strong understanding of cybersecurity principles, including threat detection, incident response, and implementation of security measures across IT infrastructures</li>
+                <li>Experience in cloud computing, including knowledge of cloud architectures, deployment models, and best practices for security and compliance</li>
+                <li>Excellent problem-solving and analytical skills, with the ability to troubleshoot complex technical issues and optimize system performance</li>
+            </ul>
+        </div>
+
+        <h2>Certifications and Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Cisco Certified Support Technician Cybersecurity</h3>
+                <p>Developed technical support skills specific to cybersecurity issues, including network security, encryption, and access control.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Cisco Certified Support Technician Cybersecurity.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>CompTIA Computer Security Support Fundamentals</h3>
+                <p>Gained proficiency in computer security principles and practices, including configuring and managing security tools and software.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/CompTIA Computer Security Support Fundamentals.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Information Technology Specialist in Cybersecurity</h3>
+                <p>Acquired comprehensive knowledge of cybersecurity principles and practices, including vulnerability assessments and incident response.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Information Technology Specialist in Cybersecurity.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Verizon Cloud Platform Job Simulation</h3>
+                <p>Gained practical knowledge of cloud computing principles, architectures, and deployment models in a simulated business environment.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Verizon Cloud Platform Job Simulation.pdf">View Certificate</a>
+            </div>
+        </div>
+
+        <div class="cool-feature">
+            <h2>IT Quote of the Day</h2>
+            <div id="it-quote"></div>
+        </div>
+
+        <a href="./mobile.html" class="back-link">Back to Home</a>
+    </div>
+
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="certFrame" style="width:100%;height:500px;border:none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const itQuotes = [
+            "The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life. - Bill Gates",
+            "It's not a faith in technology. It's faith in people. - Steve Jobs",
+            "The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past. - Tim Berners-Lee",
+            "The real danger is not that computers will begin to think like men, but that men will begin to think like computers. - Sydney J. Harris",
+            "Technology is best when it brings people together. - Matt Mullenweg"
+        ];
+
+        function getRandomQuote() {
+            return itQuotes[Math.floor(Math.random() * itQuotes.length)];
+        }
+
+        document.getElementById('it-quote').textContent = getRandomQuote();
+
+        // Certificate pop-up logic
+        const modal = document.getElementById("certModal");
+        const certFrame = document.getElementById("certFrame");
+        const certLinks = document.querySelectorAll(".cert-link");
+        const closeBtn = document.querySelector(".close");
+
+        certLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const certUrl = this.getAttribute("data-cert");
+                if (certUrl.endsWith('.pdf')) {
+                    certFrame.src = certUrl;
+                    modal.style.display = "block";
+                } else {
+                    window.location.href = certUrl;
+                }
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            certFrame.src = "";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                certFrame.src = "";
+            }
+        }
+    </script>
+</body>
+</html>

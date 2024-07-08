@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - Software Management Skills</title>
+    <link rel="stylesheet" href="./Certs_Page_style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Software Management Skills</h1>
+        
+        <div class="skill-description">
+            <p>Through coursework and practical experience, I have developed the following key skills in software management:</p>
+            <ul>
+                <li>Comprehensive understanding of software product management principles, methodologies, and Agile practices, with the ability to define product vision, strategy, and roadmap</li>
+                <li>Proficiency in gathering and analyzing user feedback, market data, and business requirements, coupled with strong analytical and critical thinking skills for evaluating and prioritizing client needs</li>
+                <li>Expertise in Agile project management techniques, including backlog grooming, sprint planning, and fostering collaboration, transparency, and self-organization within teams</li>
+                <li>Strong leadership and interpersonal skills for building consensus, driving cross-functional collaboration, and adapting to changing project requirements and business priorities</li>
+            </ul>
+        </div>
+        
+        <h2>Certifications and Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Introduction to Software Product Management</h3>
+                <p>Acquired knowledge of software product management principles, methodologies, and best practices.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Coursera Introduction to Software Product Management.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Client Needs and Software Requirements</h3>
+                <p>Developed skills in requirement engineering processes and methodologies used in software development.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Coursera Client Needs and Software Requirements.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Software Processes and Agile Practices</h3>
+                <p>Gained a solid understanding of Agile principles, values, and methodologies, along with their practical applications in software development.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Coursera Software Processes and Agile Practices.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Accenture Nordics Developer Program</h3>
+                <p>Participated in a comprehensive program focusing on software development practices and methodologies.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Accenture Nordics Developer Program.pdf">View Certificate</a>
+            </div>
+        </div>
+
+        <div class="cool-feature">
+            <h2>Software Management Quote of the Day</h2>
+            <div id="software-quote"></div>
+        </div>
+
+        <a href="./mobile.html" class="back-link">Back to Home</a>
+    </div>
+
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="certFrame" style="width:100%;height:500px;border:none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const softwareQuotes = [
+            "The best way to predict the future is to create it. - Peter Drucker",
+            "Software is a great combination of artistry and engineering. - Bill Gates",
+            "The most powerful tool we have as developers is automation. - Scott Hanselman",
+            "Good software, like wine, takes time. - Joel Spolsky",
+            "The function of good software is to make the complex appear to be simple. - Grady Booch"
+        ];
+
+        function getRandomQuote() {
+            return softwareQuotes[Math.floor(Math.random() * softwareQuotes.length)];
+        }
+
+        document.getElementById('software-quote').textContent = getRandomQuote();
+
+        // Certificate pop-up logic
+        const modal = document.getElementById("certModal");
+        const certFrame = document.getElementById("certFrame");
+        const certLinks = document.querySelectorAll(".cert-link");
+        const closeBtn = document.querySelector(".close");
+
+        certLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const certUrl = this.getAttribute("data-cert");
+                if (certUrl.endsWith('.pdf')) {
+                    certFrame.src = certUrl;
+                    modal.style.display = "block";
+                } else {
+                    window.location.href = certUrl;
+                }
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            certFrame.src = "";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                certFrame.src = "";
+            }
+        }
+    </script>
+</body>
+</html>

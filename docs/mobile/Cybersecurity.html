@@ -4,145 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanishk Thamman - Cybersecurity Skills</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Caveat:wght@700&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #F0F4F8, #E0E8F0);
-            color: #2C3E50;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        h1, h2 {
-            color: #34495E;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        .skill-description {
-            background-color: rgba(255, 255, 255, 0.7);
-            border-left: 5px solid #F5CBA7;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        .project-card h3 {
-            margin-top: 0;
-            color: #34495E;
-        }
-        .cool-feature {
-            margin-top: 50px;
-            text-align: center;
-        }
-        #cyber-quote {
-            font-family: 'Caveat', cursive;
-            font-size: 1.5em;
-            color: #34495E;
-            margin-bottom: 20px;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .back-link:hover {
-            background-color: #2980b9;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .cert-link {
-            color: #3498db;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .cert-link:hover {
-            text-decoration: underline;
-        }
-        .project-card {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #3498db, #2ecc71);
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .project-card:hover:after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-    </style>
+    <link rel="stylesheet" href="./Certs_Page_style.css">
 </head>
 <body>
     <div class="container">
@@ -202,7 +64,7 @@
             <div id="cyber-quote"></div>
         </div>
 
-        <a href="index.html" class="back-link">Back to Home</a>
+        <a href="mobile.html" class="back-link">Back to Home</a>
     </div>
 
     <div id="certModal" class="modal">
