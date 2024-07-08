@@ -13,11 +13,10 @@
             color: #2C3E50;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
         }
         .container {
             text-align: center;
@@ -56,6 +55,9 @@
             margin-top: 40px;
             perspective: 1000px;
             position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .skill-bubble {
             width: 130px;
@@ -66,17 +68,24 @@
             align-items: center;
             font-size: 1em;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.4s ease, filter 0.3s ease;
             opacity: 0.8;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transform: scale(0.9) rotateY(0deg);
             animation: popIn 0.6s ease-out forwards;
             animation-delay: calc(var(--i) * 0.1s);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: #2C3E50;
         }
-        .skill-bubble:hover, .skill-bubble.active {
+        .skill-bubble:hover {
             transform: scale(1.1) rotateY(10deg);
             opacity: 1;
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .skill-bubble:hover ~ .skill-bubble {
+            filter: blur(2px);
         }
         #skill-details {
             margin-top: 40px;
@@ -84,11 +93,16 @@
             min-height: 3em;
             color: #34495E;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
             padding: 10px;
             border-radius: 10px;
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(5px);
+            transform: translateY(20px);
+        }
+        #skill-details.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .background {
             position: fixed;
@@ -126,30 +140,6 @@
             opacity: 0.3;
             animation: particleFloat 15s infinite linear;
         }
-        .hover-instruction {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8em;
-            color: #34495E;
-            position: absolute;
-            top: 50%;
-            right: -140px;
-            transform: translateY(-50%) rotate(-15deg);
-            animation: wiggle 2s ease-in-out infinite;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-        }
-        .hover-instruction::after {
-            content: '';
-            position: absolute;
-            right: -40px;
-            top: 50%;
-            width: 40px;
-            height: 40px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334495E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 8L22 12L18 16'/%3E%3Cpath d='M2 12H22'/%3E%3C/svg%3E") no-repeat center center;
-            background-size: contain;
-            transform: translateY(-50%) rotate(15deg);
-        }
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -170,26 +160,6 @@
             0% { transform: translateY(0) translateX(0); }
             100% { transform: translateY(-100vh) translateX(100vw); }
         }
-        @keyframes wiggle {
-            0%, 100% { transform: translateY(-50%) rotate(-15deg); }
-            50% { transform: translateY(-50%) rotate(-10deg) translateX(-5px); }
-        }
-        @media only screen and (max-width: 1200px) {
-            .hover-instruction {
-                position: static;
-                transform: none;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                animation: none;
-            }
-            .hover-instruction::after {
-                position: static;
-                display: inline-block;
-                margin-left: 10px;
-                transform: rotate(90deg);
-                vertical-align: middle;
-            }
-        }
         @media only screen and (max-width: 600px) {
             h1 { font-size: 2.5em; }
             #typewriter { font-size: 1.4em; }
@@ -207,21 +177,22 @@
         <h1>Kanishk Thamman</h1>
         <div id="typewriter"></div>
         <div id="location">Frisco, TX</div>
-        <div class="hover-instruction">Hover me</div>
         <div class="skill-container" id="skill-container"></div>
         <div id="skill-details"></div>
     </div>
     <script>
         const roles = ['Student', 'Cybersecurity Enthusiast', 'Aspiring AI Specialist', 'Technical Theater Enthusiast'];
         const skills = [
-            { name: 'Data Science', color: '#AED6F1', description: 'Analyzing and interpreting complex data' },
-            { name: 'Deep Learning', color: '#F5CBA7', description: 'Building and training neural networks' },
-            { name: 'Theatrical Tech', color: '#D7BDE2', description: 'Managing lights and sound for performances' },
-            { name: 'Computer Vision', color: '#A3E4D7', description: 'Developing image and video analysis systems' },
-            { name: 'Machine Learning', color: '#F9E79F', description: 'Creating predictive models and algorithms' },
-            { name: 'Java', color: '#F5B7B1', description: 'Object-oriented programming and application development' },
-            { name: 'Python', color: '#A9DFBF', description: 'Versatile programming for various applications' }
+            { name: 'Computer Science', color: '#AED6F1', description: 'Curriculum development and teaching' },
+            { name: 'Python', color: '#F5CBA7', description: 'Web development and problem-solving' },
+            { name: 'Cybersecurity', color: '#D7BDE2', description: 'Threat analysis and security measures' },
+            { name: 'Audio Tech', color: '#A3E4D7', description: 'Dante networking and system configuration' },
+            { name: 'IT', color: '#F9E79F', description: 'Security principles and management' },
+            { name: 'Machine Learning', color: '#F5B7B1', description: 'Data science and AI applications' },
+            { name: 'Software Management', color: '#A9DFBF', description: 'Agile practices and project management' },
+            { name: 'Theater Tech', color: '#D6DBDF', description: 'Production and marketing experience' }
         ];
+        
         let roleIndex = 0;
 
         function typeWriter(text, i, fnCallback) {
@@ -250,51 +221,27 @@
         function createSkillBubbles() {
             const container = document.getElementById('skill-container');
             skills.forEach((skill, index) => {
-                const bubble = document.createElement('div');
+                const bubble = document.createElement('a');
                 bubble.className = 'skill-bubble';
                 bubble.textContent = skill.name;
                 bubble.style.backgroundColor = skill.color;
                 bubble.style.setProperty('--i', index);
-                bubble.addEventListener('mouseenter', () => {
-                    showSkillDetails(skill, bubble);
-                    document.querySelector('.hover-instruction').style.opacity = '0';
-                });
-                bubble.addEventListener('mouseleave', () => {
-                    hideSkillDetails(bubble);
-                    document.querySelector('.hover-instruction').style.opacity = '0.8';
-                });
+                bubble.href = `${skill.name.replace(/\s+/g, '')}.html`;
+                bubble.addEventListener('mouseenter', () => showSkillDetails(skill));
+                bubble.addEventListener('mouseleave', hideSkillDetails);
                 container.appendChild(bubble);
             });
         }
 
-        function showSkillDetails(skill, bubble) {
+        function showSkillDetails(skill) {
             const details = document.getElementById('skill-details');
             details.textContent = skill.description;
-            details.style.opacity = '1';
-            bubble.classList.add('active');
-
-            // Check if the details are in view
-            const rect = details.getBoundingClientRect();
-            const isInViewport = (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-
-            // If not in view, scroll to it
-            if (!isInViewport) {
-                const targetPosition = details.getBoundingClientRect().top + window.pageYOffset - 20;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            details.classList.add('visible');
         }
 
-        function hideSkillDetails(bubble) {
-            document.getElementById('skill-details').style.opacity = '0';
-            bubble.classList.remove('active');
+        function hideSkillDetails() {
+            const details = document.getElementById('skill-details');
+            details.classList.remove('visible');
         }
 
         function createParticles() {
