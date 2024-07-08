@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - Machine Learning Skills</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Caveat:wght@700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F0F4F8, #E0E8F0);
+            color: #2C3E50;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2 {
+            color: #34495E;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .skill-description {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-left: 5px solid #F5B7B1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #34495E;
+        }
+        .project-card a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+        .cool-feature {
+            margin-top: 50px;
+            text-align: center;
+        }
+        #ml-quote {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: #34495E;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Machine Learning Skills</h1>
+        
+        <div class="skill-description">
+            <p>Through hands-on experience with real-world data science projects, I have developed the following key skills:</p>
+            <ul>
+                <li>Proficiency in data preprocessing, EDA, feature selection, model training, and deployment using Python, Pandas, NumPy, and Scikit-learn</li>
+                <li>Strong understanding of statistical methods, machine learning algorithms, and data visualization techniques</li>
+                <li>Experience in regression, classification, clustering, and dimensionality reduction for various applications</li>
+                <li>Ability to analyze complex data sets, derive actionable insights, and communicate findings effectively</li>
+                <li>Adaptability in facing data science challenges and applying AI/ML solutions in diverse domains</li>
+            </ul>
+        </div>
+
+        <h2>AI GitHub Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Iris AI Model Multiclass</h3>
+                <p>A machine learning model for multiclass classification of Iris flower species, demonstrating proficiency in basic ML techniques.</p>
+                <a href="https://github.com/KanishkThamman/Iris_AI_model_multiclass" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Binary Classification Indian Liver Patient Records</h3>
+                <p>A binary classification model to predict liver disease in patients based on medical records, showcasing skills in healthcare data analysis.</p>
+                <a href="https://github.com/KanishkThamman/Binary-Classification-Indian-Liver-Patient-Records" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Face Req Using FaceNet</h3>
+                <p>Facial recognition system using Google's FaceNet model. Demonstrates ability to implement and adapt advanced AI models for real-time applications.</p>
+                <a href="https://github.com/KanishkThamman/Face-Req-Using-FaceNet" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Intel Project Air Pollution Predictor</h3>
+                <p>An AI model to predict air pollution levels, developed as part of an Intel project, showcasing application of ML in environmental science.</p>
+                <a href="https://github.com/KanishkThamman/intel-project-air_polution_predictor-" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+
+        <div class="cool-feature">
+            <h2>ML Quote of the Day</h2>
+            <div id="ml-quote"></div>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+
+    <script>
+        const mlQuotes = [
+            "Machine learning is the science of getting computers to act without being explicitly programmed. - Andrew Ng",
+            "AI is the new electricity. - Andrew Ng",
+            "The goal of machine learning is to build computer systems that automatically improve with experience. - Tom Mitchell",
+            "Machine learning is like teenage sex: everyone talks about it, nobody really knows how to do it, everyone thinks everyone else is doing it, so everyone claims they are doing it. - Dan Ariely",
+            "The key to artificial intelligence has always been the representation. - Jeff Hawkins"
+        ];
+
+        function getRandomQuote() {
+            return mlQuotes[Math.floor(Math.random() * mlQuotes.length)];
+        }
+
+        document.getElementById('ml-quote').textContent = getRandomQuote();
+    </script>
+</body>
+</html>
