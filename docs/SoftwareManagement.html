@@ -6,7 +6,15 @@
     <title>Kanishk Thamman - Software Management Skills</title>
     <link rel="stylesheet" href="./Certs_Page_style.css">
 </head>
-<body>
+<body> 
+	<div id="preloader">
+        <svg class="preloader-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="circle-outer" cx="50" cy="50" r="45" />
+          <circle class="circle-middle" cx="50" cy="50" r="30" />
+          <circle class="circle-inner" cx="50" cy="50" r="15" />
+          <text x="50" y="50" text-anchor="middle" dy=".3em" class="preloader-text">KT</text>
+        </svg>
+      </div>
     <div class="container">
         <h1>Software Management Skills</h1>
         
@@ -74,36 +82,8 @@
 
         document.getElementById('software-quote').textContent = getRandomQuote();
 
-        // Certificate pop-up logic
-        const modal = document.getElementById("certModal");
-        const certFrame = document.getElementById("certFrame");
-        const certLinks = document.querySelectorAll(".cert-link");
-        const closeBtn = document.querySelector(".close");
-
-        certLinks.forEach(link => {
-            link.addEventListener("click", function(e) {
-                e.preventDefault();
-                const certUrl = this.getAttribute("data-cert");
-                if (certUrl.endsWith('.pdf')) {
-                    certFrame.src = certUrl;
-                    modal.style.display = "block";
-                } else {
-                    window.location.href = certUrl;
-                }
-            });
-        });
-
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-            certFrame.src = "";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                certFrame.src = "";
-            }
-        }
     </script>
+    <!-- Pop-up Logic and Preloader Animation-->
+    <script src="Pop_up-Preloader.js"></script>
 </body>
 </html>

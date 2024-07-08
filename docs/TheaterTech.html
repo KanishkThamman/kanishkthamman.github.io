@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - Tech Theater Skills</title>
+    <link rel="stylesheet" href="./Certs_Page_style.css">
+</head>
+<body> 
+	<div id="preloader">
+        <svg class="preloader-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="circle-outer" cx="50" cy="50" r="45" />
+          <circle class="circle-middle" cx="50" cy="50" r="30" />
+          <circle class="circle-inner" cx="50" cy="50" r="15" />
+          <text x="50" y="50" text-anchor="middle" dy=".3em" class="preloader-text">KT</text>
+        </svg>
+      </div>
+    <div class="container">
+        <h1>Tech Theater Skills</h1>
+        
+        <div class="skill-description">
+            <p>Through hands-on experience in theater productions, I have developed the following key skills in technical theater:</p>
+            <ul>
+                <li>Teamwork and collaboration with diverse team members, including actors, directors, technicians, and marketers</li>
+                <li>Knowledge of theater production techniques, including stagecraft, lighting design, and sound engineering</li>
+                <li>Creativity and problem-solving abilities in a dynamic live theater environment</li>
+                <li>Enhanced communication and interpersonal skills for effective engagement with cast, crew, and audience members</li>
+            </ul>
+        </div>
+
+        <h2>Projects and Experiences</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Audio Crew for Two Shows</h3>
+                <p>Served as an audio crew member for two theater productions, gaining hands-on experience in microphone techniques and real-time troubleshooting in a performance environment.</p>
+            </div>
+            <div class="project-card">
+                <h3>Theater Production Techniques</h3>
+                <p>Expanded knowledge of stagecraft, lighting design, and sound engineering through hands-on experience and mentorship from industry professionals.</p>
+            </div>
+            <div class="project-card">
+                <h3>Production Coordination</h3>
+                <p>Learned the importance of attention to detail, organization, and time management in coordinating complex productions and ensuring successful execution from conception to curtain call.</p>
+            </div>
+            <div class="project-card">
+                <h3>Live Performance Problem-Solving</h3>
+                <p>Developed resilience and adaptability in handling unexpected setbacks, last-minute changes, and technical difficulties during performances, maintaining composure under pressure.</p>
+            </div>
+        </div>
+
+        <div class="cool-feature">
+            <h2>Theater Quote of the Day</h2>
+            <div id="theater-quote"></div>
+        </div>
+
+        <a href="./mobile.html" class="back-link">Back to Home</a>
+    </div>
+
+    <script>
+        const theaterQuotes = [
+            "All the world's a stage, and all the men and women merely players. - William Shakespeare",
+            "I regard the theatre as the greatest of all art forms, the most immediate way in which a human being can share with another the sense of what it is to be a human being. - Oscar Wilde",
+            "The theater is so endlessly fascinating because it's so accidental. It's so much like life. - Arthur Miller",
+            "Theatre is a series of insurmountable obstacles on the road to imminent disaster. - Tom Stoppard",
+            "The theater is the only institution in the world which has been dying for four thousand years and has never succumbed. - John Steinbeck"
+        ];
+
+        function getRandomQuote() {
+            return theaterQuotes[Math.floor(Math.random() * theaterQuotes.length)];
+        }
+
+        document.getElementById('theater-quote').textContent = getRandomQuote();
+    </script>
+
+    <!-- Pop-up Logic and Preloader Animation-->
+    <script src="Pop_up-Preloader.js"></script>
+</body>
+</html>

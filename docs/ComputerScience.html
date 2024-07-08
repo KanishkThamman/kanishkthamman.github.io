@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - Computer Science Skills</title>
+    <link rel="stylesheet" href="./Certs_Page_style.css">
+</head>
+<body> 
+	<div id="preloader">
+        <svg class="preloader-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="circle-outer" cx="50" cy="50" r="45" />
+          <circle class="circle-middle" cx="50" cy="50" r="30" />
+          <circle class="circle-inner" cx="50" cy="50" r="15" />
+          <text x="50" y="50" text-anchor="middle" dy=".3em" class="preloader-text">KT</text>
+        </svg>
+      </div>
+      
+    <div class="container">
+        <h1>Computer Science Skills</h1>
+        
+        <div class="skill-description">
+            <p>Through hands-on experience and professional development, I have acquired the following key skills in Computer Science:</p>
+            <ul>
+                <li>Proficiency in Python programming and various web development frameworks, with a focus on data science and machine learning applications</li>
+                <li>Strong problem-solving and analytical skills, with the ability to tackle complex technical challenges and optimize system performance</li>
+                <li>Experience in data preprocessing, exploratory data analysis, feature selection, and model training using libraries such as Pandas, NumPy, and Scikit-learn</li>
+                <li>Expertise in version control systems, collaborative development workflows, and writing clean, efficient, and well-documented code</li>
+            </ul>
+        </div>
+
+        <h2>Certifications and Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Programming in C</h3>
+                <p>Developed a strong foundation in C programming, including data structures, algorithms, and memory management.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Programming in C.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Python for Beginners</h3>
+                <p>Mastered Python fundamentals and best practices, laying the groundwork for advanced applications in data science and machine learning.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Python for Beginners_.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Air Pollution Predictor</h3>
+                <p>Developed an AI model to predict air pollution levels, applying machine learning techniques to environmental data.</p>
+                <a href="https://github.com/KanishkThamman/intel-project-air_polution_predictor-" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Face Req Using FaceNet</h3>
+                <p>Facial recognition system using Google's FaceNet model. Demonstrates ability to implement and adapt advanced AI models for real-time applications.</p>
+                <a href="https://github.com/KanishkThamman/Face-Req-Using-FaceNet" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+
+        <div class="cool-feature">
+            <h2>Computer Science Quote of the Day</h2>
+            <div id="cs-quote"></div>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="certFrame" style="width:100%;height:500px;border:none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const csQuotes = [
+            "Computer science is no more about computers than astronomy is about telescopes. - Edsger Dijkstra",
+            "The computer was born to solve problems that did not exist before. - Bill Gates",
+            "The most important property of a program is whether it accomplishes the intention of its user. - C.A.R. Hoare",
+            "Simplicity is prerequisite for reliability. - Edsger Dijkstra",
+            "Programming isn't about what you know; it's about what you can figure out. - Chris Pine"
+        ];
+
+        function getRandomQuote() {
+            return csQuotes[Math.floor(Math.random() * csQuotes.length)];
+        }
+
+        document.getElementById('cs-quote').textContent = getRandomQuote();
+
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            preloader.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+
+    </script>
+
+    <!-- Pop-up Logic and Preloader Animation-->
+    <script src="Pop_up-Preloader.js"></script>
+</body>
+</html>
