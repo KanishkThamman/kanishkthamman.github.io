@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishk Thamman - Cybersecurity Skills</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Caveat:wght@700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F0F4F8, #E0E8F0);
+            color: #2C3E50;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2 {
+            color: #34495E;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .skill-description {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-left: 5px solid #F5CBA7;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #34495E;
+        }
+        .cool-feature {
+            margin-top: 50px;
+            text-align: center;
+        }
+        #cyber-quote {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: #34495E;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .cert-link {
+            color: #3498db;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .cert-link:hover {
+            text-decoration: underline;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .project-card:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cybersecurity Skills</h1>
+        
+        <div class="skill-description">
+            <p>Through hands-on experience and professional development, I have acquired the following key skills in cybersecurity:</p>
+            <ul>
+                <li>In-depth knowledge of cybersecurity threats and defenses</li>
+                <li>Proficiency in using cybersecurity tools and conducting vulnerability assessments</li>
+                <li>Technical skills in configuring and managing security measures</li>
+                <li>Critical thinking and problem-solving in identifying and mitigating security threats</li>
+                <li>Effective communication of complex security concepts and issues</li>
+                <li>Understanding of network security, encryption, and access control</li>
+                <li>Collaboration and teamwork in cybersecurity projects and study groups</li>
+                <li>Experience in incident detection, analysis, response, and mitigation</li>
+                <li>Knowledge of regulatory compliance requirements and industry standards</li>
+            </ul>
+        </div>
+
+        <h2>Certifications and Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Cisco Certified Support Technician Cybersecurity</h3>
+                <p>Developed technical support skills specific to cybersecurity issues, including network security, encryption, and access control.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Cisco Certified Support Technician Cybersecurity.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>CompTIA Computer Security Support Fundamentals</h3>
+                <p>Gained proficiency in computer security principles and practices, including configuring and managing security tools and software.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/CompTIA Computer Security Support Fundamentals.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>IBM Cybersecurity Fundamentals</h3>
+                <p>Learned to detect and respond to various types of cyber threats, enhancing problem-solving skills in computer security.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/IBM cyber sec fundamentals.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Information Technology Specialist in Cybersecurity</h3>
+                <p>Acquired comprehensive knowledge of cybersecurity principles and practices, including vulnerability assessments and incident response.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Information Technology Specialist in Cybersecurity.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>Mastercard Cybersecurity Virtual Experience Program</h3>
+                <p>Participated in a virtual experience program, gaining insights into cybersecurity operations and incident response.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/Mastercard Cybersecurity Virtual Experience Program.pdf">View Certificate</a>
+            </div>
+            <div class="project-card">
+                <h3>PwC US Cyber Security Consulting Simulation</h3>
+                <p>Simulated consulting engagements, addressing complex security challenges such as data breaches and malware infections.</p>
+                <a href="#" class="cert-link" data-cert="./assets/Certificates/PwC US Cyber Security Consulting Simulation.pdf">View Certificate</a>
+            </div>
+        </div>
+
+        <div class="cool-feature">
+            <h2>Cybersecurity Quote of the Day</h2>
+            <div id="cyber-quote"></div>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="certFrame" style="width:100%;height:500px;border:none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const cyberQuotes = [
+            "Security is not a product, but a process. - Bruce Schneier",
+            "The best way to predict the future is to create it. - Peter Drucker",
+            "Cybersecurity is much more than an IT topic. - Stephane Nappo",
+            "The only secure computer is one that's unplugged, locked in a safe, and buried 20 feet under the ground in a secret location... and I'm not even too sure about that one. - Dennis Hughes",
+            "The Internet is the first thing that humanity has built that humanity doesn't understand, the largest experiment in anarchy that we have ever had. - Eric Schmidt"
+        ];
+
+        function getRandomQuote() {
+            return cyberQuotes[Math.floor(Math.random() * cyberQuotes.length)];
+        }
+
+        document.getElementById('cyber-quote').textContent = getRandomQuote();
+
+        // Certificate pop-up logic
+        const modal = document.getElementById("certModal");
+        const certFrame = document.getElementById("certFrame");
+        const certLinks = document.querySelectorAll(".cert-link");
+        const closeBtn = document.querySelector(".close");
+
+        certLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                const certUrl = this.getAttribute("data-cert");
+                if (certUrl.endsWith('.pdf')) {
+                    certFrame.src = certUrl;
+                    modal.style.display = "block";
+                } else {
+                    window.location.href = certUrl;
+                }
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            certFrame.src = "";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                certFrame.src = "";
+            }
+        }
+    </script>
+</body>
+</html>
